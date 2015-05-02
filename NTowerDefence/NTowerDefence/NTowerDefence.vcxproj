@@ -222,11 +222,13 @@
     <ClInclude Include="external\GL\glew.h" />
     <ClInclude Include="external\GL\glxew.h" />
     <ClInclude Include="external\GL\wglew.h" />
+    <ClInclude Include="src\Shader\ShaderHandler.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="NTowerDefence.cpp" />
+    <ClCompile Include="src\Shader\ShaderHandler.cpp" />
+    <ClCompile Include="src\NTowerDefence.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -335,6 +337,8 @@
     <None Include="external\glm\gtx\vector_query.inl" />
     <None Include="external\glm\gtx\verbose_operator.inl" />
     <None Include="external\glm\gtx\wrap.inl" />
+    <None Include="shaders\fragment\SimpleFragmentShader.fragmentshader" />
+    <None Include="shaders\vertex\SimpleVertexShader.vertexshader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

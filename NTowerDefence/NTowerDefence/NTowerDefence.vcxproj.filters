@@ -405,12 +405,18 @@
     <ClInclude Include="external\glm\glm.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shader\ShaderHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NTowerDefence.cpp">
+    <ClCompile Include="src\NTowerDefence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shader\ShaderHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -722,5 +728,7 @@
     <None Include="external\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="shaders\fragment\SimpleFragmentShader.fragmentshader" />
+    <None Include="shaders\vertex\SimpleVertexShader.vertexshader" />
   </ItemGroup>
 </Project>
