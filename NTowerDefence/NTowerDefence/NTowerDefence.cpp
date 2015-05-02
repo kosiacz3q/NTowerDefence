@@ -6,7 +6,7 @@
 
 GLFWwindow* window;
 
-//#include <glm/glm.hpp>
+#include <glm/glm.hpp>
 //using namespace glm;
 
 int main(void)
