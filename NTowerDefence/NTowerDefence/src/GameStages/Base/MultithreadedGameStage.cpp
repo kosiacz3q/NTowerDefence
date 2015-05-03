@@ -14,6 +14,8 @@ MultithreadedGameStage::~MultithreadedGameStage()
 
 void MultithreadedGameStage::onBegin()
 {
+	state = GameStageState::ACTIVE;
+
 	drawThread = std::thread(&MultithreadedGameStage::drawWapper, this);
 	updateThread = std::thread(&MultithreadedGameStage::updateWrapper, this);
 }
@@ -33,7 +35,6 @@ void MultithreadedGameStage::drawWapper()
 		draw();
 
 		glfwSwapBuffers(gameContext->window.get()); 
-		glfwPollEvents();
 	}
 }
 

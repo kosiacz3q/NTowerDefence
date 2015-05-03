@@ -5,7 +5,7 @@
 
 GameManager::GameManager()
 {
-
+	gameContex = GameContextPtr(new GameContext());
 }
 
 GameManager::~GameManager()
@@ -64,8 +64,8 @@ void GameManager::run()
 {
 	do
 	{
-		std::this_thread::sleep_for(std::chrono::seconds(1));
-
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		glfwPollEvents();
 	} while (
 		glfwGetKey(gameContex->window.get(), GLFW_KEY_ESCAPE) != GLFW_PRESS &&
 		glfwWindowShouldClose(gameContex->window.get()) == 0);

@@ -3,6 +3,7 @@
 GameStageManager::GameStageManager()
 {
 	stagesContainer = StagesContainer();
+	actualStage = nullptr;
 }
 
 GameStageManager::~GameStageManager()
@@ -17,12 +18,15 @@ void GameStageManager::init()
 
 void GameStageManager::registerStage(BaseGameStagePtr gameStage)
 {
+	gameStage->init();
+
 	stagesContainer.insert(PairIdStage(gameStage->getId(), gameStage));
 }
 
 void GameStageManager::setStage(std::string stageId)
 {
-	actualStage->onClose();
+	if (actualStage)
+		actualStage->onClose();
 	
 	auto result = stagesContainer.find(stageId);
 
@@ -30,4 +34,5 @@ void GameStageManager::setStage(std::string stageId)
 		throw std::logic_error("There is no stage with ID " + stageId);
 
 	actualStage = result->second;
+	actualStage->onBegin();
 }
