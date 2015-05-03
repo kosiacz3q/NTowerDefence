@@ -17,5 +17,6 @@ public:
 private:
 	GLuint vertexArrayId;
 	GLuint vertexBufferId;
+	GLfloat* gVertexBufferData;
 };
 

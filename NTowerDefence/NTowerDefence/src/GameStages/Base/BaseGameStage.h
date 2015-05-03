@@ -3,6 +3,8 @@
 #include <memory>
 #include <string>
 
+#include "../src/GameObjects/Base/UpdateContext.hpp"
+
 class BaseGameStage
 {
 public:
@@ -11,9 +13,13 @@ public:
 
 	virtual void init() = 0;
 	
-	virtual void begin() = 0;
+	virtual void onBegin() = 0;
 
-	virtual void close() = 0;
+	virtual void draw() = 0;
+
+	virtual void update(UpdateContextPtr context) = 0;
+
+	virtual void onClose() = 0;
 
 	virtual bool isClosed() = 0;
 

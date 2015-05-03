@@ -18,7 +18,7 @@ public:
 
 private:
 
-	GLfloat* g_vertex_buffer_data;
+	GLfloat* gVertexBufferData;
 };
 
 typedef std::shared_ptr<CubeObject> CubeObjectPtr;

@@ -22,7 +22,12 @@ void GameStageManager::registerStage(BaseGameStagePtr gameStage)
 
 void GameStageManager::setStage(std::string stageId)
 {
-	actualStage->close();
+	actualStage->onClose();
+	
+	auto result = stagesContainer.find(stageId);
 
-	while (!actualStage->isClosed());
+	if (result == stagesContainer.end())
+		throw std::logic_error("There is no stage with ID " + stageId);
+
+	actualStage = result->second;
 }

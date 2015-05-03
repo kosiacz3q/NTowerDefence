@@ -27,9 +27,11 @@ ShaderManager::~ShaderManager()
 
 void ShaderManager::loadShader(const std::string& id, const std::string& vertexFilePath, const std::string& fragmentFilePath)
 {
-	shadersContainer.insert(PairIdShader(id, ShaderPtr(new Shader())))
+	shadersContainer.insert(
+		PairIdShader(
+		id,
+		ShaderPtr(new Shader(LoadShaders(vertexFilePath.c_str(), fragmentFilePath.c_str())))));
 }
-
 
 GLuint ShaderManager::LoadShaders(const char * vertex_file_path, const char * fragment_file_path)
 {

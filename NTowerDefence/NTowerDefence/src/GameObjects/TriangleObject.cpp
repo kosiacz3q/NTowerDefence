@@ -6,14 +6,22 @@ TriangleObject::TriangleObject()
 	glGenVertexArrays(1, &vertexArrayId);
 	glBindVertexArray(vertexArrayId);
 
-	glGenBuffers(1, &vertexBuffer);
+	glGenBuffers(1, &vertexBufferId);
 
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+	gVertexBufferData = new GLfloat[]
+	{
+		-.5f, -.5f, 0.0f,
+		.5f, -.5f, 0.0f,
+		0.0f, .5f, 0.0f,
+	};
 
-	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+
+	glBufferData(GL_ARRAY_BUFFER, sizeof(gVertexBufferData), gVertexBufferData, GL_STATIC_DRAW);
 }
 
 
 TriangleObject::~TriangleObject()
 {
+	delete[] gVertexBufferData;
 }

@@ -3,7 +3,8 @@
 
 CubeObject::CubeObject()
 {
-	g_vertex_buffer_data = new GLfloat[]{
+	gVertexBufferData = new GLfloat[]
+	{
 		-1.0f, -1.0f, -1.0f, // triangle 1 : begin
 		-1.0f, -1.0f, 1.0f,
 		-1.0f, 1.0f, 1.0f, // triangle 1 : end
@@ -47,7 +48,7 @@ CubeObject::CubeObject()
 
 CubeObject::~CubeObject()
 {
-	delete[] g_vertex_buffer_data;
+	delete[] gVertexBufferData;
 }
 
 void CubeObject::draw(DrawingContextPtr drawingContext)

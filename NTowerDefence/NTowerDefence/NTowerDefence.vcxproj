@@ -95,11 +95,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameStages\Base\MultithreadedGameStage.h" />
+    <ClInclude Include="src\GameStages\Base\GameStageState.h" />
+    <ClInclude Include="src\GameObjects\Base\IDrawable.h" />
+    <ClInclude Include="src\GameObjects\Base\IUpdateable.h" />
+    <ClInclude Include="src\GameStages\GameStageMap.h" />
     <ClInclude Include="src\Shader\ShaderManager.h" />
     <ClInclude Include="src\Shader\Shader.h" />
     <ClInclude Include="src\GameManager\GameManager.h" />
-    <ClInclude Include="src\GameStates\GameStageManager.h" />
-    <ClInclude Include="src\GameStates\Base\BaseGameStage.h" />
+    <ClInclude Include="src\GameStages\GameStageManager.h" />
+    <ClInclude Include="src\GameStages\Base\BaseGameStage.h" />
     <ClInclude Include="src\GameObjects\CubeObject.h" />
     <ClInclude Include="src\GameObjects\Base\BaseGameObject.h" />
     <ClInclude Include="external\GLFW\glfw3.h" />
@@ -233,17 +238,21 @@
     <ClInclude Include="src\GameObjects\Base\UpdateContext.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="src\GameObjects\TriangleObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameStages\Base\MultithreadedGameStage.cpp" />
+    <ClCompile Include="src\GameStages\GameStageMap.cpp" />
     <ClCompile Include="src\Shader\ShaderManager.cpp" />
     <ClCompile Include="src\Shader\Shader.cpp" />
     <ClCompile Include="src\GameManager\GameManager.cpp" />
-    <ClCompile Include="src\GameStates\GameStageManager.cpp" />
-    <ClCompile Include="src\GameStates\Base\BaseGameStage.cpp" />
+    <ClCompile Include="src\GameStages\GameStageManager.cpp" />
+    <ClCompile Include="src\GameStages\Base\BaseGameStage.cpp" />
     <ClCompile Include="src\GameObjects\CubeObject.cpp" />
     <ClCompile Include="src\GameObjects\Base\BaseGameObject.cpp" />
     <ClCompile Include="src\NTowerDefence.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="src\GameObjects\TriangleObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\glew32.lib" />
