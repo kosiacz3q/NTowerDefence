@@ -6,6 +6,7 @@
 
 class IUpdateable
 {
+public:
 	virtual void update(UpdateContextPtr updateContext) = 0;
 };
 

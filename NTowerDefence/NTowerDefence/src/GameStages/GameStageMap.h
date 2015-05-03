@@ -1,8 +1,11 @@
 #pragma once
 
-#include <glm\ext.hpp>
-
 #include "Base\MultithreadedGameStage.h"
+
+#include "..\src\GameObjects\Base\UpdateContext.hpp"
+#include "..\src\GameObjects\Base\DrawingContext.hpp"
+
+#include "..\GameObjects\TriangleObject.h"
 
 class GameStageMap : public MultithreadedGameStage
 {
@@ -20,21 +23,18 @@ public:
 
 	void onClose();
 
-	bool isClosed();
-
 	inline std::string getId()
 	{
 		return id;
 	}
 
-private:
-	
-
-	glm::mat4 projection;
-	glm::mat4 view;
-	glm::mat4 model;
-	glm::mat4 MVP;
+private:	
 	GameStageState state;
+
+	BaseGameObjectPtr triangle;
+	
+	DrawingContextPtr drawingContext;
+	UpdateContextPtr updateContext;
 
 	const std::string id = "GAME_STAGE_MAP";
 };

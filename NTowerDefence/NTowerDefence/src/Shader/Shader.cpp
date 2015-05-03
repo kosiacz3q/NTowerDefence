@@ -6,7 +6,6 @@ Shader::Shader(GLuint programId)
 	this->programId = programId;
 }
 
-
 Shader::~Shader()
 {
 	glDeleteProgram(programId);

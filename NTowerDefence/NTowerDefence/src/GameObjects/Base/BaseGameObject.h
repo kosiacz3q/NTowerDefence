@@ -10,3 +10,4 @@ public:
 	virtual ~BaseGameObject();
 };
 
+typedef std::shared_ptr<BaseGameObject> BaseGameObjectPtr;

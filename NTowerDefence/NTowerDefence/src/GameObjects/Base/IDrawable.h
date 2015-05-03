@@ -6,6 +6,7 @@
 
 class IDrawable
 {
+public:
 	virtual void draw(DrawingContextPtr drawingContext) = 0;
 };
 

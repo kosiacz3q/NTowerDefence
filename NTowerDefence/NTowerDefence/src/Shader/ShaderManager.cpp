@@ -24,6 +24,15 @@ ShaderManager::~ShaderManager()
 {
 }
 
+ShaderPtr ShaderManager::getShader(const std::string& id)
+{
+	auto result = shadersContainer.find(id);
+
+	if (result == shadersContainer.end())
+		throw std::logic_error("There is no shader with id " + id);
+
+	return result->second;
+}
 
 void ShaderManager::loadShader(const std::string& id, const std::string& vertexFilePath, const std::string& fragmentFilePath)
 {

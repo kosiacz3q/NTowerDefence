@@ -18,16 +18,18 @@ public:
 	void onClose();
 	bool isClosed();
 
-	void drawWapper();
-	void updateWrapper();
+	
 protected:
 	typedef MultithreadedGameStage Inherited;
+	GameContextPtr gameContext;
 
 private:
+	void drawWapper();
+	void updateWrapper();
+
 	std::thread drawThread;
 	std::thread updateThread;
 
 	GameStageState state;
-	GameContextPtr gameContext;
 };
 
