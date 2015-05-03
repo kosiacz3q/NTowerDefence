@@ -4,23 +4,20 @@
 #include "Shader\ShaderManager.h"
 #include "GameManager\GameManager.h"
 
-
-#include <glm\glm.hpp>
-#include <glm\ext.hpp>
-//using namespace glm;
-
-const GLfloat g_vertex_buffer_data[] = {
-	-.5f, -.5f, 0.0f,
-	.5f, -.5f, 0.0f,
-	0.0f, .5f, 0.0f,
-};
+#include "GameStages\GameStageMap.h"
 
 int main(void)
 {
 	GameManagerPtr gameManager = GameManagerPtr(new GameManager());
-	ShaderManagerPtr shaderManager = ShaderManagerPtr(new ShaderManager());
+	GameContextPtr gameContext = gameManager->getGameContext();
+	
+	gameContext->shaderManager = ShaderManagerPtr(new ShaderManager());
+	gameContext->gameStageManager = GameStageManagerPtr(new GameStageManager());
 
-	shaderManager->loadShader(
+
+	gameContext->gameStageManager->registerStage(BaseGameStagePtr(new GameStageMap(gameContext)));
+
+	gameContext->shaderManager->loadShader(
 		"simpleProgram",
 		"shaders/vertex/SimpleVertexShader.vertexshader",
 		"shaders/fragment/SimpleFragmentShader.fragmentshader");
@@ -55,15 +52,13 @@ int main(void)
 		glDisableVertexAttribArray(0);
 
 		// Swap buffers
-		glfwSwapBuffers(window);
-		glfwPollEvents();
+		
 
 	} // Check if the ESC key was pressed or the window was closed
-	while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
-	glfwWindowShouldClose(window) == 0);
+	
 
 
-	glfwTerminate();
+	
 
 	return 0;
 }

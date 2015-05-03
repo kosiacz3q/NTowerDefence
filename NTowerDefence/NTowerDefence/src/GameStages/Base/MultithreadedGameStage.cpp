@@ -1,9 +1,9 @@
 #include "MultithreadedGameStage.h"
 
 
-MultithreadedGameStage::MultithreadedGameStage()
+MultithreadedGameStage::MultithreadedGameStage(GameContextPtr gameContext)
 {
-
+	this->gameContext = gameContext;
 }
 
 
@@ -14,8 +14,8 @@ MultithreadedGameStage::~MultithreadedGameStage()
 
 void MultithreadedGameStage::onBegin()
 {
-	drawThread = std::thread(&MultithreadedGameStage::drawWapper, *this);
-	updateThread = std::thread(&MultithreadedGameStage::updateWrapper, *this);
+	drawThread = std::thread(&MultithreadedGameStage::drawWapper, this);
+	updateThread = std::thread(&MultithreadedGameStage::updateWrapper, this);
 }
 
 void MultithreadedGameStage::onClose()
@@ -30,15 +30,22 @@ void MultithreadedGameStage::drawWapper()
 {
 	while (state == GameStageState::ACTIVE)
 	{
+		draw();
 
+		glfwSwapBuffers(gameContext->window.get()); 
+		glfwPollEvents();
 	}
 }
 
 void MultithreadedGameStage::updateWrapper()
 {
+	UpdateContextPtr updateContext = UpdateContextPtr(new UpdateContext());
+
+	updateContext->elapsedTime = 100;
+
 	while (state == GameStageState::ACTIVE)
 	{
-
+		update(updateContext);
 	}
 }
 

@@ -18,6 +18,11 @@ public:
 
 	void setStage(std::string stageId);
 
+	inline BaseGameStagePtr getActiveStage()
+	{
+		return actualStage;
+	}
+
 private:
 	typedef std::map<std::string, BaseGameStagePtr> StagesContainer;
 	typedef std::pair<std::string, BaseGameStagePtr> PairIdStage;

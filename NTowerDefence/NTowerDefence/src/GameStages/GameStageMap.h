@@ -7,16 +7,20 @@
 class GameStageMap : public MultithreadedGameStage
 {
 public:
-	GameStageMap();
+	GameStageMap(GameContextPtr gameContext);
 	virtual ~GameStageMap();
 
 	void init();
 
 	void onBegin();
-	void onClose();
 
 	void draw();
-	void update();
+
+	void update(UpdateContextPtr context);
+
+	void onClose();
+
+	bool isClosed();
 
 	inline std::string getId()
 	{

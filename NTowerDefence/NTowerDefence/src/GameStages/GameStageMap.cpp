@@ -1,7 +1,8 @@
 #include "GameStageMap.h"
 
 
-GameStageMap::GameStageMap()
+GameStageMap::GameStageMap(GameContextPtr gameContext)
+	:Inherited(gameContext)
 {
 }
 
@@ -45,7 +46,13 @@ void  GameStageMap::draw()
 
 }
 
-void  GameStageMap::update()
+
+void GameStageMap::update(UpdateContextPtr context)
+{
+
+}
+
+void GameStageMap::onClose()
 {
 
 }

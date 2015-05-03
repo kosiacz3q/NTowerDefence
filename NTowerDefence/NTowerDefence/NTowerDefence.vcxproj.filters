@@ -450,6 +450,9 @@
     <ClInclude Include="src\GameStages\Base\MultithreadedGameStage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameManager\GameContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\NTowerDefence.cpp">

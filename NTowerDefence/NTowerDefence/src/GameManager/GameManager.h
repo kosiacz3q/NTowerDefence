@@ -2,25 +2,27 @@
 
 #include <memory>
 
-
-#include <GL\glew.h>
-#include <GLFW\glfw3.h>
+#include "GameContext.h"
 
 class GameManager
 {
 public:
 	GameManager();
 	virtual ~GameManager();
-
-
 	void initWindow();
 
+	inline GameContextPtr getGameContext()
+	{
+		return gameContex;
+	}
+
+	void run();
+
 private:
-	
 	void initGLFW();
 	void initGLEW();
 
-	GLFWwindow* window;
+	GameContextPtr gameContex;
 };
 
 typedef std::shared_ptr<GameManager> GameManagerPtr;
