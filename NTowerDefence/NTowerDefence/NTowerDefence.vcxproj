@@ -95,6 +95,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Shader\ShaderManager.h" />
+    <ClInclude Include="src\Shader\Shader.h" />
+    <ClInclude Include="src\GameManager\GameManager.h" />
+    <ClInclude Include="src\GameStates\GameStageManager.h" />
+    <ClInclude Include="src\GameStates\Base\BaseGameStage.h" />
+    <ClInclude Include="src\GameObjects\CubeObject.h" />
+    <ClInclude Include="src\GameObjects\Base\BaseGameObject.h" />
     <ClInclude Include="external\GLFW\glfw3.h" />
     <ClInclude Include="external\GLFW\glfw3native.h" />
     <ClInclude Include="external\glm\core\func_common.hpp" />
@@ -222,12 +229,19 @@
     <ClInclude Include="external\GL\glew.h" />
     <ClInclude Include="external\GL\glxew.h" />
     <ClInclude Include="external\GL\wglew.h" />
-    <ClInclude Include="src\Shader\ShaderHandler.h" />
+    <ClInclude Include="src\GameObjects\Base\DrawingContext.hpp" />
+    <ClInclude Include="src\GameObjects\Base\UpdateContext.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Shader\ShaderHandler.cpp" />
+    <ClCompile Include="src\Shader\ShaderManager.cpp" />
+    <ClCompile Include="src\Shader\Shader.cpp" />
+    <ClCompile Include="src\GameManager\GameManager.cpp" />
+    <ClCompile Include="src\GameStates\GameStageManager.cpp" />
+    <ClCompile Include="src\GameStates\Base\BaseGameStage.cpp" />
+    <ClCompile Include="src\GameObjects\CubeObject.cpp" />
+    <ClCompile Include="src\GameObjects\Base\BaseGameObject.cpp" />
     <ClCompile Include="src\NTowerDefence.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>

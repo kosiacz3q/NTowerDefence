@@ -1,5 +1,6 @@
-#include "ShaderHandler.h"
+#include "ShaderManager.h"
 
+#include <stdexcept>
 #include <stdio.h>
 #include <string>
 #include <vector>
@@ -13,16 +14,24 @@ using namespace std;
 
 #include <GL/glew.h>
 
-ShaderHandler::ShaderHandler()
+ShaderManager::ShaderManager()
+{
+	shadersContainer = ShadersContainer();
+}
+
+
+ShaderManager::~ShaderManager()
 {
 }
 
 
-ShaderHandler::~ShaderHandler()
+void ShaderManager::loadShader(const std::string& id, const std::string& vertexFilePath, const std::string& fragmentFilePath)
 {
+	shadersContainer.insert(PairIdShader(id, ShaderPtr(new Shader())))
 }
 
-GLuint ShaderHandler::LoadShaders(const char * vertex_file_path, const char * fragment_file_path)
+
+GLuint ShaderManager::LoadShaders(const char * vertex_file_path, const char * fragment_file_path)
 {
 	// Create the shaders
 	GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
@@ -42,7 +51,8 @@ GLuint ShaderHandler::LoadShaders(const char * vertex_file_path, const char * fr
 	// Read the Fragment Shader code from the file
 	std::string FragmentShaderCode;
 	std::ifstream FragmentShaderStream(fragment_file_path, std::ios::in);
-	if (FragmentShaderStream.is_open()){
+	if (FragmentShaderStream.is_open())
+	{
 		std::string Line = "";
 		while (getline(FragmentShaderStream, Line))
 			FragmentShaderCode += "\n" + Line;
