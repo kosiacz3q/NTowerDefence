@@ -15,11 +15,12 @@ public:
 
 	void draw(DrawingContextPtr drawingContext);
 	void update(UpdateContextPtr updateContext);
+	void init();
 
 private:
 	GLuint vertexArrayId;
 	GLuint vertexBufferId;
-	GLfloat* gVertexBufferData;
+	GLfloat* vertexBufferData;
 	GLuint matrixID;
 	ShaderPtr shader;
 };

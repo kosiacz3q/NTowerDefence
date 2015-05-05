@@ -1,25 +1,8 @@
 #include "TriangleObject.h"
 
-
 TriangleObject::TriangleObject(ShaderPtr shader)
 {
 	this->shader = shader;
-	
-	glGenVertexArrays(1, &vertexArrayId);
-	glBindVertexArray(vertexArrayId);
-	
-	gVertexBufferData = new GLfloat[9]
-	{
-		-.5f, -.5f, 0.0f,
-		.5f, -.5f, 0.0f,
-		0.0f, .5f, 0.0f,
-	};
-	
-	glGenBuffers(1, &vertexBufferId);
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(gVertexBufferData), gVertexBufferData, GL_STATIC_DRAW);
-
-	matrixID = glGetUniformLocation(shader->getId(), "MVP");
 }
 
 TriangleObject::~TriangleObject()
@@ -27,16 +10,34 @@ TriangleObject::~TriangleObject()
 	glDeleteBuffers(1, &vertexBufferId);
 	glDeleteVertexArrays(1, &vertexArrayId);
 
-	delete[] gVertexBufferData;
+	//delete[] vertexBufferData;
+}
+
+void TriangleObject::init()
+{
+	glGenVertexArrays(1, &vertexArrayId);
+	glBindVertexArray(vertexArrayId);
+	
+	vertexBufferData = new GLfloat[]
+	{
+		-1.0f, -1.0f, 0.0f,
+			1.0f, -1.0f, 0.0f,
+			0.0f, 1.0f, 0.0f
+	};
+
+	glGenBuffers(1, &vertexBufferId);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), vertexBufferData, GL_STATIC_DRAW);
+
+	matrixID = glGetUniformLocation(shader->getId(), "MVP");
 }
 
 void TriangleObject::draw(DrawingContextPtr drawingContext)
 {
-	glUseProgram(shader->getId());
-
 	auto model = glm::mat4(1.0f);
 	glm::mat4  MVP = drawingContext->projection * drawingContext->view * model; // Remember, matrix multiplication is the other way around
 
+	glUseProgram(shader->getId());
 	// Send our transformation to the currently bound shader,
 	// in the "MVP" uniform
 	// For each model you render, since the MVP will be different (at least the M part)
