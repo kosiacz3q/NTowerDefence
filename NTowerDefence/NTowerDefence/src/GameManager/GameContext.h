@@ -7,15 +7,17 @@
 
 #include "..\Shader\ShaderManager.h"
 #include "..\GameStages\GameStageManager.h"
+#include "..\Drawing\DrawingHandler.h"
 
 typedef std::shared_ptr<GLFWwindow> GLFWwindowPtr;
 
 class GameContext
 {
 public:
-	GLFWwindowPtr window;
+	
 	ShaderManagerPtr shaderManager;
 	GameStageManagerPtr gameStageManager;
+	DrawingHandlerPtr drawingHandler;
 };
 
 typedef std::shared_ptr<GameContext> GameContextPtr;

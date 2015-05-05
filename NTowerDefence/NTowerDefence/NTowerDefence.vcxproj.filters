@@ -453,6 +453,9 @@
     <ClInclude Include="src\GameManager\GameContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drawing\DrawingHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\NTowerDefence.cpp">
@@ -489,6 +492,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameStages\Base\MultithreadedGameStage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drawing\DrawingHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

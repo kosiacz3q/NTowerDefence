@@ -9,7 +9,6 @@ class GameManager
 public:
 	GameManager();
 	virtual ~GameManager();
-	void initWindow();
 
 	inline GameContextPtr getGameContext()
 	{
@@ -19,8 +18,6 @@ public:
 	void run();
 
 private:
-	void initGLFW();
-	void initGLEW();
 
 	GameContextPtr gameContex;
 };
