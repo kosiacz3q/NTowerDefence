@@ -5,7 +5,10 @@
 
 GameManager::GameManager()
 {
-	gameContex = GameContextPtr(new GameContext());
+	gameContext = GameContextPtr(new GameContext());
+	gameContext->gameStageManager = GameStageManagerPtr(new GameStageManager());
+	gameContext->shaderManager = ShaderManagerPtr(new ShaderManager());
+	gameContext->drawingHandler = DrawingHandlerPtr(new DrawingHandler());
 }
 
 GameManager::~GameManager()
@@ -13,27 +16,25 @@ GameManager::~GameManager()
 
 }
 
+void GameManager::init()
+{
+	gameContext->drawingHandler->init();
+}
+
 void GameManager::run()
 {
-	gameContex->drawingHandler->run();
-
-	while (!gameContex->drawingHandler->isReady())
-	{
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
-	}
-
-	auto window = gameContex->drawingHandler->getWindow();
+	auto window = gameContext->drawingHandler->getWindow();
+	auto stageManager = gameContext->gameStageManager;
 
 	do
 	{
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		stageManager->iterate();
 		glfwPollEvents();
+		
 	} while (
 		glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
 		glfwWindowShouldClose(window) == 0);
 
-	if (gameContex->gameStageManager->getActiveStage() != nullptr)
-		gameContex->gameStageManager->getActiveStage()->onClose();
-
-	gameContex->drawingHandler->stop();
+	if (gameContext->gameStageManager->getActiveStage() != nullptr)
+		gameContext->gameStageManager->getActiveStage()->onClose();
 }

@@ -4,25 +4,12 @@
 
 DrawingHandler::DrawingHandler()
 {
-	drawableContainer = DrawableContainer();
-	running = false;
-	isDrawingHandlerReady = false;
-	drawingContext = DrawingContextPtr(new DrawingContext());
+
 }
 
 DrawingHandler::~DrawingHandler()
 {
-}
-
-void DrawingHandler::run()
-{
-	drawingThread = std::thread(&DrawingHandler::internalDrawing, this);
-}
-
-void DrawingHandler::stop()
-{
-	running = false;
-	drawingThread.join();
+	glfwTerminate();
 }
 
 void DrawingHandler::init()
@@ -69,22 +56,4 @@ void DrawingHandler::initGLEW()
 
 	// Dark blue background
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
-}
-
-void DrawingHandler::internalDrawing()
-{
-	running = true;
-	init();
-	isDrawingHandlerReady = true;
-
-	while (running)
-	{
-		for each (IDrawablePtr drawable in drawableContainer)
-		{
-			drawable->draw(drawingContext);
-			glfwSwapBuffers(window);
-		}
-	}
-
-	glfwTerminate();
 }

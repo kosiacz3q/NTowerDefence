@@ -1,13 +1,14 @@
 #pragma once
 
-#include "Base\MultithreadedGameStage.h"
+#include "Base\BaseGameStage.h"
 
-#include "..\src\GameObjects\Base\UpdateContext.hpp"
-#include "..\src\GameObjects\Base\DrawingContext.hpp"
+#include "..\GameObjects\Base\UpdateContext.hpp"
+#include "..\GameObjects\Base\DrawingContext.hpp"
+#include "..\GameManager\GameContext.h"
 
 #include "..\GameObjects\TriangleObject.h"
 
-class GameStageMap : public MultithreadedGameStage
+class GameStageMap : public BaseGameStage
 {
 public:
 	GameStageMap(GameContextPtr gameContext);
@@ -28,14 +29,26 @@ public:
 		return id;
 	}
 
-private:	
-	GameStageState state;
+	inline GameStageState getState()
+	{
+		return state;
+	}
 
+private:	
 	BaseGameObjectPtr triangle;
 	
 	DrawingContextPtr drawingContext;
 	UpdateContextPtr updateContext;
 
+	typedef std::set<IDrawablePtr> DrawableContainer;
+	DrawableContainer drawableContainer;
+
+	GLFWwindow* window;
+
+	GameContextPtr gameContext;
+
 	const std::string id = "GAME_STAGE_MAP";
+
+	GameStageState state;
 };
 

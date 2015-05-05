@@ -10,23 +10,19 @@ int main(void)
 {
 	GameManagerPtr gameManager = GameManagerPtr(new GameManager());
 
+	gameManager->init();
+
 	GameContextPtr gameContext = gameManager->getGameContext();
-	
-	gameContext->drawingHandler = DrawingHandlerPtr(new DrawingHandler());
 
-	gameManager->run();
-
-	gameContext->shaderManager = ShaderManagerPtr(new ShaderManager());
 	gameContext->shaderManager->loadShader(
 		"simpleProgram",
 		"shaders/vertex/SimpleVertexShader.vertexshader",
 		"shaders/fragment/SimpleFragmentShader.fragmentshader");
 
-	gameContext->gameStageManager = GameStageManagerPtr(new GameStageManager());
-
 	gameContext->gameStageManager->registerStage(BaseGameStagePtr(new GameStageMap(gameContext)));
+	gameContext->gameStageManager->requestStageSet("GAME_STAGE_MAP");
 
-	gameContext->gameStageManager->setStage("GAME_STAGE_MAP");
+	gameManager->run();
 
 	return 0;
 }

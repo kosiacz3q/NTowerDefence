@@ -12,14 +12,16 @@ public:
 
 	inline GameContextPtr getGameContext()
 	{
-		return gameContex;
+		return gameContext;
 	}
+
+	void init();
 
 	void run();
 
 private:
 
-	GameContextPtr gameContex;
+	GameContextPtr gameContext;
 };
 
 typedef std::shared_ptr<GameManager> GameManagerPtr;

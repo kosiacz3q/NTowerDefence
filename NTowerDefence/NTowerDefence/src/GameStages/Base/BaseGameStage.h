@@ -3,6 +3,8 @@
 #include <memory>
 #include <string>
 
+#include "GameStageState.h"
+
 #include "../src/GameObjects/Base/UpdateContext.hpp"
 
 class BaseGameStage
@@ -21,7 +23,7 @@ public:
 
 	virtual void onClose() = 0;
 
-	virtual bool isClosed() = 0;
+	virtual GameStageState getState() = 0;
 
 	virtual std::string getId() = 0;
 };

@@ -12,16 +12,16 @@ public:
 	GameStageManager();
 	virtual ~GameStageManager();
 
-	void init();
-
 	void registerStage(BaseGameStagePtr gameStage);
 
-	void setStage(std::string stageId);
+	void requestStageSet(std::string stageId);
 
 	inline BaseGameStagePtr getActiveStage()
 	{
 		return actualStage;
 	}
+
+	void iterate();
 
 private:
 	typedef std::map<std::string, BaseGameStagePtr> StagesContainer;
@@ -30,6 +30,14 @@ private:
 	StagesContainer stagesContainer;
 
 	BaseGameStagePtr actualStage;
+
+	bool isChangeRequested;
+
+	UpdateContextPtr updateContext;
+
+	std::string requestedStageId;
+
+	void setStage();
 };
 
 typedef std::shared_ptr<GameStageManager> GameStageManagerPtr;

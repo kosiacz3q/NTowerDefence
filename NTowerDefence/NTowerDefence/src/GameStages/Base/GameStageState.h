@@ -4,5 +4,6 @@ enum GameStageState
 {
 	READY,
 	ACTIVE,
-	CLOSING
+	CLOSING,
+	NOT_INITIALIZED
 };

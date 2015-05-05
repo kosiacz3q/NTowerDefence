@@ -2,9 +2,10 @@
 
 
 GameStageMap::GameStageMap(GameContextPtr gameContext)
-	:Inherited(gameContext)
+	:gameContext(gameContext)
 {
 	drawingContext = DrawingContextPtr(new DrawingContext());
+	state = GameStageState::NOT_INITIALIZED;
 }
 
 GameStageMap::~GameStageMap()
@@ -29,12 +30,13 @@ void GameStageMap::init()
 
 void GameStageMap::onBegin()
 {
-	Inherited::onBegin();
+	window = gameContext->drawingHandler->getWindow();
+	state = GameStageState::ACTIVE;
 }
 
 void GameStageMap::onClose()
 {
-	Inherited::onClose();
+	state = GameStageState::READY;
 }
 
 void  GameStageMap::draw()
@@ -43,6 +45,8 @@ void  GameStageMap::draw()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	triangle->draw(drawingContext);
+
+	glfwSwapBuffers(window);
 }
 
 void GameStageMap::update(UpdateContextPtr context)
