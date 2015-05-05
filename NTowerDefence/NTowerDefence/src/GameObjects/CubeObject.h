@@ -4,21 +4,29 @@
 
 #include <GL\glew.h>
 
+#include "..\Shader\Shader.h"
+
 #include "Base\BaseGameObject.h"
 
 class CubeObject :
 	public BaseGameObject
 {
 public:
-	CubeObject();
+	CubeObject(ShaderPtr shader);
 	virtual ~CubeObject();
 
 	void draw(DrawingContextPtr drawingContext);
 	void update(UpdateContextPtr updateContext);
+	void init();
 
 private:
-
-	GLfloat* gVertexBufferData;
+	GLuint vertexArrayId;
+	GLuint vertexBufferId;
+	GLuint colorBufferId;
+	GLfloat* vertexBufferData;
+	GLfloat* colorBufferData;
+	GLuint matrixID;
+	ShaderPtr shader;
 };
 
 typedef std::shared_ptr<CubeObject> CubeObjectPtr;

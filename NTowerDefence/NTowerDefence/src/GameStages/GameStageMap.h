@@ -7,6 +7,7 @@
 #include "..\GameManager\GameContext.h"
 
 #include "..\GameObjects\TriangleObject.h"
+#include "..\GameObjects\CubeObject.h"
 
 class GameStageMap : public BaseGameStage
 {
@@ -36,6 +37,7 @@ public:
 
 private:	
 	BaseGameObjectPtr triangle;
+	BaseGameObjectPtr cube;
 	
 	DrawingContextPtr drawingContext;
 	UpdateContextPtr updateContext;

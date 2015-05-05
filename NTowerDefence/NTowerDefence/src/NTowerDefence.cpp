@@ -19,6 +19,11 @@ int main(void)
 		"shaders/vertex/SimpleVertexShader.vertexshader",
 		"shaders/fragment/SimpleFragmentShader.fragmentshader");
 
+	gameContext->shaderManager->loadShader(
+		"colouringProgram",
+		"shaders/vertex/TransformVertexShader.vertexshader",
+		"shaders/fragment/ColorFragmentShader.fragmentshader");
+
 	gameContext->gameStageManager->registerStage(BaseGameStagePtr(new GameStageMap(gameContext)));
 	gameContext->gameStageManager->requestStageSet("GAME_STAGE_MAP");
 

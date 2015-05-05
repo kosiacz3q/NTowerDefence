@@ -1,8 +1,9 @@
 #include "TriangleObject.h"
 
 TriangleObject::TriangleObject(ShaderPtr shader)
+	:shader(shader)
 {
-	this->shader = shader;
+
 }
 
 TriangleObject::~TriangleObject()
@@ -10,7 +11,7 @@ TriangleObject::~TriangleObject()
 	glDeleteBuffers(1, &vertexBufferId);
 	glDeleteVertexArrays(1, &vertexArrayId);
 
-	//delete[] vertexBufferData;
+	delete[] vertexBufferData;
 }
 
 void TriangleObject::init()
@@ -18,7 +19,7 @@ void TriangleObject::init()
 	glGenVertexArrays(1, &vertexArrayId);
 	glBindVertexArray(vertexArrayId);
 	
-	vertexBufferData = new GLfloat[]
+	vertexBufferData = new GLfloat[9]
 	{
 		-1.0f, -1.0f, 0.0f,
 			1.0f, -1.0f, 0.0f,
