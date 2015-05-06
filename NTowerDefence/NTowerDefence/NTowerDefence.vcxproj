@@ -95,7 +95,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Drawing\DrawingHandler.h" />
+    <ClInclude Include="src\Drawing\WindowManager.h" />
     <ClInclude Include="src\GameManager\GameContext.h" />
     <ClInclude Include="src\GameStages\Base\GameStageState.h" />
     <ClInclude Include="src\GameObjects\Base\IDrawable.h" />
@@ -242,7 +242,7 @@
     <ClInclude Include="src\GameObjects\TriangleObject.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Drawing\DrawingHandler.cpp" />
+    <ClCompile Include="src\Drawing\WindowManager.cpp" />
     <ClCompile Include="src\GameStages\GameStageMap.cpp" />
     <ClCompile Include="src\Shader\ShaderManager.cpp" />
     <ClCompile Include="src\Shader\Shader.cpp" />

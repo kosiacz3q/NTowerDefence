@@ -450,7 +450,7 @@
     <ClInclude Include="src\GameManager\GameContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Drawing\DrawingHandler.h">
+    <ClInclude Include="src\Drawing\WindowManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -488,7 +488,7 @@
     <ClCompile Include="src\GameStages\GameStageMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Drawing\DrawingHandler.cpp">
+    <ClCompile Include="src\Drawing\WindowManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
