@@ -18,7 +18,7 @@ public:
 	
 	ShaderManagerPtr shaderManager;
 	GameStageManagerPtr gameStageManager;
-	WindowManagerPtr drawingHandler;
+	WindowManagerPtr windowHandler;
 	TextureManagerPtr textureManager;
 };
 

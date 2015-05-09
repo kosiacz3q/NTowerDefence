@@ -8,7 +8,7 @@ GameManager::GameManager()
 	gameContext = GameContextPtr(new GameContext());
 	gameContext->gameStageManager = GameStageManagerPtr(new GameStageManager());
 	gameContext->shaderManager = ShaderManagerPtr(new ShaderManager());
-	gameContext->drawingHandler = WindowManagerPtr(new WindowManager());
+	gameContext->windowHandler = WindowManagerPtr(new WindowManager());
 	gameContext->textureManager = TextureManagerPtr(new TextureManager());
 }
 
@@ -19,12 +19,12 @@ GameManager::~GameManager()
 
 void GameManager::init()
 {
-	gameContext->drawingHandler->init();
+	gameContext->windowHandler->init();
 }
 
 void GameManager::run()
 {
-	auto window = gameContext->drawingHandler->getWindow();
+	auto window = gameContext->windowHandler->getWindow();
 	auto stageManager = gameContext->gameStageManager;
 
 	do

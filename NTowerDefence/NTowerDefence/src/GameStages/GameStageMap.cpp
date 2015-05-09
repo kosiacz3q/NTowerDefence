@@ -40,7 +40,7 @@ void GameStageMap::init()
 
 void GameStageMap::onBegin()
 {
-	window = gameContext->drawingHandler->getWindow();
+	window = gameContext->windowHandler->getWindow();
 
 	triangle->init();
 	cube->init();

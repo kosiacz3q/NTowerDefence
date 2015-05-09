@@ -26,9 +26,6 @@ void TextureManager::loadTexture(std::string id, std::string path)
 	if (result == 0)
 		throw std::logic_error("Error while loading texture " + std::string(SOIL_last_result()));
 
-	//GLuint result = loadDDS(path.c_str());
-
-	//GLuint result = loadBMP_custom(path.c_str());
 	textures.insert(PairIdTexture(id, TexturePtr(new Texture(result))));
 }
 
