@@ -9,7 +9,6 @@ TextureManager::TextureManager()
 
 }
 
-
 TextureManager::~TextureManager()
 {
 
@@ -17,6 +16,7 @@ TextureManager::~TextureManager()
 
 void TextureManager::loadTexture(std::string id, std::string path)
 {
+
 	GLuint result = SOIL_load_OGL_texture(
 		path.c_str(),
 		SOIL_LOAD_AUTO,
@@ -26,10 +26,13 @@ void TextureManager::loadTexture(std::string id, std::string path)
 	if (result == 0)
 		throw std::logic_error("Error while loading texture " + std::string(SOIL_last_result()));
 
-	textures.insert(PairIdTexture(id, result));
+	//GLuint result = loadDDS(path.c_str());
+
+	//GLuint result = loadBMP_custom(path.c_str());
+	textures.insert(PairIdTexture(id, TexturePtr(new Texture(result))));
 }
 
-GLuint TextureManager::getTexture(std::string id)
+TexturePtr TextureManager::getTexture(std::string id)
 {
 	auto result = textures.find(id);
 

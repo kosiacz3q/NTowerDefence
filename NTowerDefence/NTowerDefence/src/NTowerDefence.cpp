@@ -24,6 +24,15 @@ int main(void)
 		"shaders/vertex/TransformVertexShader.vertexshader",
 		"shaders/fragment/ColorFragmentShader.fragmentshader");
 
+	gameContext->shaderManager->loadShader(
+		"texturingProgram",
+		"shaders/vertex/TextureVertexShader.vertexshader",
+		"shaders/fragment/TextureFragmentShader.fragmentshader");
+
+	gameContext->textureManager->loadTexture(
+		"simpleTexture",
+		"textures/uvtemplate.dds");
+
 	gameContext->gameStageManager->registerStage(BaseGameStagePtr(new GameStageMap(gameContext)));
 	gameContext->gameStageManager->requestStageSet("GAME_STAGE_MAP");
 

@@ -27,6 +27,8 @@ private:
 	void initGLFW();
 	void initGLEW();
 
+	void setGlStates();
+
 	GLFWwindow* window;
 	DrawingContextPtr drawingContext;
 

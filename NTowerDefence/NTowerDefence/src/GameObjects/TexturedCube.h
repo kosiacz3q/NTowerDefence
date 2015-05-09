@@ -1,19 +1,16 @@
 #pragma once
 
-#include <memory>
-
-#include <GL\glew.h>
-
-#include "..\Shader\Shader.h"
-
 #include "Base\BaseGameObject.h"
 
-class CubeObject :
+#include "..\Shader\Shader.h"
+#include "..\Textures\Texture.h"
+
+class TexturedCube :
 	public BaseGameObject
 {
 public:
-	CubeObject(ShaderPtr shader);
-	virtual ~CubeObject();
+	TexturedCube(ShaderPtr shader, TexturePtr texture);
+	virtual ~TexturedCube();
 
 	void draw(DrawingContextPtr drawingContext);
 	void update(UpdateContextPtr updateContext);
@@ -22,13 +19,15 @@ public:
 private:
 	GLuint vertexArrayId;
 	GLuint vertexBufferId;
-	GLuint colorBufferId;
+
 	GLfloat* vertexBufferData;
-	GLfloat* colorBufferData;
+	GLfloat* uvBufferData;
+
 	GLuint matrixID;
+	GLuint textureSamplerId;
+	GLuint uvBufferId;
 
 	ShaderPtr shader;
+	TexturePtr texture;
 };
-
-typedef std::shared_ptr<CubeObject> CubeObjectPtr;
 

@@ -13,6 +13,10 @@
 !NTowerDefence/Release/glfw3.dll
 !NTowerDefence/Release/glew32.dll
 
+NTowerDefence/Debug/NTowerDefence.exe
+NTowerDefence/Release/NTowerDefence.exe
+
+
 *.exe
 *.tlog
 *.idb

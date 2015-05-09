@@ -97,6 +97,7 @@
   <ItemGroup>
     <ClInclude Include="src\Drawing\WindowManager.h" />
     <ClInclude Include="src\GameContext.h" />
+    <ClInclude Include="src\GameObjects\TexturedCube.h" />
     <ClInclude Include="src\GameStages\Base\GameStageState.h" />
     <ClInclude Include="src\GameObjects\Base\IDrawable.h" />
     <ClInclude Include="src\GameObjects\Base\IUpdateable.h" />
@@ -237,6 +238,8 @@
     <ClInclude Include="external\GL\wglew.h" />
     <ClInclude Include="src\GameObjects\Base\DrawingContext.hpp" />
     <ClInclude Include="src\GameObjects\Base\UpdateContext.hpp" />
+    <ClInclude Include="src\Textures\soil\SOIL.h" />
+    <ClInclude Include="src\Textures\Texture.h" />
     <ClInclude Include="src\Textures\TextureManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -244,6 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Drawing\WindowManager.cpp" />
+    <ClCompile Include="src\GameObjects\TexturedCube.cpp" />
     <ClCompile Include="src\GameStages\GameStageMap.cpp" />
     <ClCompile Include="src\Shader\ShaderManager.cpp" />
     <ClCompile Include="src\Shader\Shader.cpp" />
@@ -253,6 +257,7 @@
     <ClCompile Include="src\GameObjects\CubeObject.cpp" />
     <ClCompile Include="src\GameObjects\Base\BaseGameObject.cpp" />
     <ClCompile Include="src\NTowerDefence.cpp" />
+    <ClCompile Include="src\Textures\Texture.cpp" />
     <ClCompile Include="src\Textures\TextureManager.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="src\GameObjects\TriangleObject.cpp" />
@@ -367,8 +372,10 @@
     <None Include="external\glm\gtx\vector_query.inl" />
     <None Include="external\glm\gtx\verbose_operator.inl" />
     <None Include="external\glm\gtx\wrap.inl" />
+    <None Include="shaders\fragment\ColorFragmentShader.fragmentshader" />
     <None Include="shaders\fragment\SimpleFragmentShader.fragmentshader" />
     <None Include="shaders\vertex\SimpleVertexShader.vertexshader" />
+    <None Include="shaders\vertex\TransformVertexShader.vertexshader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

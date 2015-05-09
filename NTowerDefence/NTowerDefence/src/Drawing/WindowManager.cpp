@@ -16,6 +16,7 @@ void WindowManager::init()
 {
 	initGLFW();
 	initGLEW();
+	setGlStates();
 }
 
 void WindowManager::initGLFW()
@@ -56,4 +57,15 @@ void WindowManager::initGLEW()
 
 	// Dark blue background
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+}
+
+void WindowManager::setGlStates()
+{
+	// Enable depth test
+	glEnable(GL_DEPTH_TEST);
+	// Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS);
+	//glEnable(GL_TEXTURE_2D);
+
+	//glDisable(GL_LIGHTING);
 }

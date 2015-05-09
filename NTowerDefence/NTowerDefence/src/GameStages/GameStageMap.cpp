@@ -1,5 +1,8 @@
 #include "GameStageMap.h"
 
+#include "..\GameObjects\TriangleObject.h"
+#include "..\GameObjects\CubeObject.h"
+#include "..\GameObjects\TexturedCube.h"
 
 GameStageMap::GameStageMap(GameContextPtr gameContext)
 	:gameContext(gameContext)
@@ -16,6 +19,9 @@ void GameStageMap::init()
 {
 	triangle = BaseGameObjectPtr(new TriangleObject(gameContext->shaderManager->getShader("simpleProgram")));
 	cube = BaseGameObjectPtr(new CubeObject(gameContext->shaderManager->getShader("colouringProgram")));
+	texturedCube = BaseGameObjectPtr(new TexturedCube(
+		gameContext->shaderManager->getShader("texturingProgram"),
+		gameContext->textureManager->getTexture("simpleTexture")));
 
 	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
 	drawingContext->projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
@@ -38,6 +44,7 @@ void GameStageMap::onBegin()
 
 	triangle->init();
 	cube->init();
+	texturedCube->init();
 
 	state = GameStageState::ACTIVE;
 }
@@ -53,7 +60,8 @@ void  GameStageMap::draw()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//triangle->draw(drawingContext);
-	cube->draw(drawingContext);
+	//cube->draw(drawingContext);
+	texturedCube->draw(drawingContext);
 
 	glfwSwapBuffers(window);
 }

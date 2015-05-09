@@ -3,8 +3,9 @@
 #include <string>
 #include <map>
 #include <memory>
+#include <GL\glew.h>
 
-#include "GL\glew.h"
+#include "Texture.h"
 
 class TextureManager
 {
@@ -13,11 +14,11 @@ public:
 	virtual ~TextureManager();
 
 	void loadTexture(std::string id, std::string path);
-	GLuint getTexture(std::string id);
+	TexturePtr getTexture(std::string id);
 
 private:
-	typedef std::map<std::string,GLuint> ContainerIdTexture;
-	typedef std::pair<std::string, GLuint> PairIdTexture;
+	typedef std::map<std::string, TexturePtr> ContainerIdTexture;
+	typedef std::pair<std::string, TexturePtr> PairIdTexture;
 
 	ContainerIdTexture textures;
 };
