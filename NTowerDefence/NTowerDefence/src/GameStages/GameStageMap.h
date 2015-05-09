@@ -8,6 +8,11 @@
 
 #include "..\GameObjects\Base\BaseGameObject.h"
 
+#include "..\Camera\StaticCamera.h"
+
+#include "..\Input\KeyboardHandler.h"
+#include "..\Input\MouseHandler.h"
+
 class GameStageMap : public BaseGameStage
 {
 public:
@@ -41,6 +46,11 @@ private:
 	
 	DrawingContextPtr drawingContext;
 	UpdateContextPtr updateContext;
+
+	StaticCameraPtr camera;
+
+	KeyboardHandlerPtr keyboard;
+	MouseHandlerPtr mouse;
 
 	typedef std::set<IDrawablePtr> DrawableContainer;
 	DrawableContainer drawableContainer;

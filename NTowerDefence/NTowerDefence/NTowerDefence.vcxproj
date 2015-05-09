@@ -95,6 +95,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Camera\Base\Camera.h" />
+    <ClInclude Include="src\Camera\StaticCamera.h" />
     <ClInclude Include="src\Drawing\WindowManager.h" />
     <ClInclude Include="src\GameContext.h" />
     <ClInclude Include="src\GameObjects\TexturedCube.h" />
@@ -248,6 +250,8 @@
     <ClInclude Include="src\GameObjects\TriangleObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera\Base\Camera.cpp" />
+    <ClCompile Include="src\Camera\StaticCamera.cpp" />
     <ClCompile Include="src\Drawing\WindowManager.cpp" />
     <ClCompile Include="src\GameObjects\TexturedCube.cpp" />
     <ClCompile Include="src\GameStages\GameStageMap.cpp" />

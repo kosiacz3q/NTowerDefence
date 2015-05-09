@@ -8,6 +8,12 @@ GameStageMap::GameStageMap(GameContextPtr gameContext)
 	:gameContext(gameContext)
 {
 	drawingContext = DrawingContextPtr(new DrawingContext());
+
+	camera = StaticCameraPtr(new StaticCamera());
+
+	keyboard = KeyboardHandlerPtr(new KeyboardHandler());
+	mouse = MouseHandlerPtr(new MouseHandler(gameContext->windowHandler->getWindow()));
+
 	state = GameStageState::NOT_INITIALIZED;
 }
 
@@ -28,12 +34,7 @@ void GameStageMap::init()
 	// Or, for an ortho camera :
 	//glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,0.0f,100.0f); // In world coordinates
 
-	// Camera matrix
-	drawingContext->view = glm::lookAt(
-		glm::vec3(4, 3, 3), // Camera is at (4,3,3), in World Space
-		glm::vec3(0, 0, 0), // and looks at the origin
-		glm::vec3(0, 1, 0)  // Head is up (set to 0,-1,0 to look upside-down)
-		);
+	camera->setPosition(glm::vec3(4, 3, 3), glm::vec3(-4, -3, -3));
 
 	state = GameStageState::READY;
 }
@@ -68,5 +69,5 @@ void  GameStageMap::draw()
 
 void GameStageMap::update(UpdateContextPtr context)
 {
-
+	drawingContext->view = camera->getViewMatrix();
 }
