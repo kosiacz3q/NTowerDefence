@@ -495,6 +495,12 @@
   <ItemGroup>
     <Library Include="libs\glfw3.lib" />
     <Library Include="libs\glew32.lib" />
+    <Library Include="libs\debug\glfw3.lib" />
+    <Library Include="libs\debug\glew32.lib" />
+    <Library Include="libs\debug\SOIL.lib" />
+    <Library Include="libs\release\glew32.lib" />
+    <Library Include="libs\release\glfw3.lib" />
+    <Library Include="libs\release\SOIL.lib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="external\glm\core\func_common.inl">
