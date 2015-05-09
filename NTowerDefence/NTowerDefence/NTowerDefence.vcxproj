@@ -96,14 +96,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Drawing\WindowManager.h" />
-    <ClInclude Include="src\GameManager\GameContext.h" />
+    <ClInclude Include="src\GameContext.h" />
     <ClInclude Include="src\GameStages\Base\GameStageState.h" />
     <ClInclude Include="src\GameObjects\Base\IDrawable.h" />
     <ClInclude Include="src\GameObjects\Base\IUpdateable.h" />
     <ClInclude Include="src\GameStages\GameStageMap.h" />
     <ClInclude Include="src\Shader\ShaderManager.h" />
     <ClInclude Include="src\Shader\Shader.h" />
-    <ClInclude Include="src\GameManager\GameManager.h" />
+    <ClInclude Include="src\GameManager.h" />
     <ClInclude Include="src\GameStages\GameStageManager.h" />
     <ClInclude Include="src\GameStages\Base\BaseGameStage.h" />
     <ClInclude Include="src\GameObjects\CubeObject.h" />
@@ -237,6 +237,7 @@
     <ClInclude Include="external\GL\wglew.h" />
     <ClInclude Include="src\GameObjects\Base\DrawingContext.hpp" />
     <ClInclude Include="src\GameObjects\Base\UpdateContext.hpp" />
+    <ClInclude Include="src\Textures\TextureManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="src\GameObjects\TriangleObject.h" />
@@ -246,12 +247,13 @@
     <ClCompile Include="src\GameStages\GameStageMap.cpp" />
     <ClCompile Include="src\Shader\ShaderManager.cpp" />
     <ClCompile Include="src\Shader\Shader.cpp" />
-    <ClCompile Include="src\GameManager\GameManager.cpp" />
+    <ClCompile Include="src\GameManager.cpp" />
     <ClCompile Include="src\GameStages\GameStageManager.cpp" />
     <ClCompile Include="src\GameStages\Base\BaseGameStage.cpp" />
     <ClCompile Include="src\GameObjects\CubeObject.cpp" />
     <ClCompile Include="src\GameObjects\Base\BaseGameObject.cpp" />
     <ClCompile Include="src\NTowerDefence.cpp" />
+    <ClCompile Include="src\Textures\TextureManager.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="src\GameObjects\TriangleObject.cpp" />
   </ItemGroup>

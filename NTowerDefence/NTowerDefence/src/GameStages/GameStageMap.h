@@ -4,7 +4,7 @@
 
 #include "..\GameObjects\Base\UpdateContext.hpp"
 #include "..\GameObjects\Base\DrawingContext.hpp"
-#include "..\GameManager\GameContext.h"
+#include "..\GameContext.h"
 
 #include "..\GameObjects\TriangleObject.h"
 #include "..\GameObjects\CubeObject.h"

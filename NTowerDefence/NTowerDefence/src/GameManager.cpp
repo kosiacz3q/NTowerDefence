@@ -9,6 +9,7 @@ GameManager::GameManager()
 	gameContext->gameStageManager = GameStageManagerPtr(new GameStageManager());
 	gameContext->shaderManager = ShaderManagerPtr(new ShaderManager());
 	gameContext->drawingHandler = WindowManagerPtr(new WindowManager());
+	gameContext->textureManager = TextureManagerPtr(new TextureManager());
 }
 
 GameManager::~GameManager()

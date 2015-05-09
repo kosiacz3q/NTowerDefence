@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "Shader\ShaderManager.h"
-#include "GameManager\GameManager.h"
+#include "GameManager.h"
 
 #include "GameStages\GameStageMap.h"
 
