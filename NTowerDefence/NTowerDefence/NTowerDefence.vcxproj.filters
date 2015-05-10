@@ -853,5 +853,13 @@
     <None Include="shaders\vertex\SimpleVertexShader.vertexshader" />
     <None Include="shaders\fragment\ColorFragmentShader.fragmentshader" />
     <None Include="shaders\vertex\TransformVertexShader.vertexshader" />
+    <None Include="shaders\fragment\TextureFragmentShader.fragmentshader" />
+    <None Include="shaders\vertex\TextureVertexShader.vertexshader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\uvtemplate.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\uvtemplate.DDS" />
   </ItemGroup>
 </Project>
