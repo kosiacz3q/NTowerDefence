@@ -477,7 +477,7 @@
     <ClInclude Include="src\Shader\ShaderLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Base\GenericManager.h">
+    <ClInclude Include="src\Base\GenericAssetsManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

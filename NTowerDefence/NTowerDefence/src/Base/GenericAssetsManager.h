@@ -3,7 +3,7 @@
 #include <map>
 
 template<class AssetHolder>
-class GenericManager
+class GenericAssetsManager
 {
 public:
 	
@@ -19,7 +19,7 @@ private:
 };
 
 template<class AssetHolder>
-void GenericManager<AssetHolder>::InsertAsset(const std::string id, AssetHolder assetHolder)
+void GenericAssetsManager<AssetHolder>::InsertAsset(const std::string id, AssetHolder assetHolder)
 {
 	if (assetsContainer.find(id) != assetsContainer.end())
 		throw std::logic_error("Asset with id " + id + " already exists");
@@ -31,7 +31,7 @@ void GenericManager<AssetHolder>::InsertAsset(const std::string id, AssetHolder 
 }
 
 template<class AssetHolder>
-AssetHolder GenericManager<AssetHolder>::getAsset(const std::string& id)
+AssetHolder GenericAssetsManager<AssetHolder>::getAsset(const std::string& id)
 {
 	auto result = assetsContainer.find(id);
 
