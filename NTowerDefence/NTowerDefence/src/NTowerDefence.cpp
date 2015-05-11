@@ -2,6 +2,8 @@
 #include <stdlib.h>
 
 #include "Shader\ShaderLoader.h"
+#include "Textures\TexturesLoader.h"
+
 #include "GameManager.h"
 
 #include "GameStages\GameStageMap.h"
@@ -37,9 +39,11 @@ int main(void)
 			"shaders/fragment/TextureFragmentShader.fragmentshader"
 	));
 
-	gameContext->textureManager->loadTexture(
+	TexturesLoader texturesLoader;
+
+	gameContext->textureManager->InsertAsset(
 		"simpleTexture",
-		"textures/uvtemplate.dds");
+		texturesLoader.loadTexture("textures/uvtemplate.dds"));
 
 	gameContext->gameStageManager->registerStage(BaseGameStagePtr(new GameStageMap(gameContext)));
 	gameContext->gameStageManager->requestStageSet("GAME_STAGE_MAP");

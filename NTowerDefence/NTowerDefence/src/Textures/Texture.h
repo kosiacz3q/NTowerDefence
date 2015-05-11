@@ -3,6 +3,8 @@
 #include <GL\glew.h>
 #include <memory>
 
+#include "..\Base\GenericAssetsManager.h"
+
 class Texture
 {
 public:
@@ -13,3 +15,5 @@ public:
 };
 
 typedef std::shared_ptr<Texture> TexturePtr;
+typedef GenericAssetsManager<TexturePtr> TextureManager;
+typedef std::shared_ptr<TextureManager> TextureManagerPtr;
