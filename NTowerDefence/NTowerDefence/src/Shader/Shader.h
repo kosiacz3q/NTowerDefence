@@ -4,6 +4,8 @@
 
 #include <GL/glew.h>
 
+#include "..\Base\GenericManager.h"
+
 class Shader
 {
 public:
@@ -21,3 +23,5 @@ private:
 };
 
 typedef std::shared_ptr<Shader> ShaderPtr;
+typedef GenericManager<ShaderPtr> ShaderManager;
+typedef std::shared_ptr<ShaderManager> ShaderManagerPtr;

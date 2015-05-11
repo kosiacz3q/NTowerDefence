@@ -1,4 +1,5 @@
-#include "ShaderManager.h"
+#include "ShaderLoader.h"
+
 
 #include <stdexcept>
 #include <stdio.h>
@@ -12,38 +13,20 @@ using namespace std;
 #include <stdlib.h>
 #include <string.h>
 
-#include <GL/glew.h>
-
-ShaderManager::ShaderManager()
-{
-	shadersContainer = ShadersContainer();
-}
-
-
-ShaderManager::~ShaderManager()
+ShaderLoader::ShaderLoader()
 {
 }
 
-ShaderPtr ShaderManager::getShader(const std::string& id)
+
+ShaderLoader::~ShaderLoader()
 {
-	auto result = shadersContainer.find(id);
-
-	if (result == shadersContainer.end())
-		throw std::logic_error("There is no shader with id " + id);
-
-	return result->second;
 }
 
-void ShaderManager::loadShader(const std::string& id, const std::string& vertexFilePath, const std::string& fragmentFilePath)
-{
-	shadersContainer.insert(
-		PairIdShader(
-		id,
-		ShaderPtr(new Shader(LoadShaders(vertexFilePath.c_str(), fragmentFilePath.c_str())))));
-}
 
-GLuint ShaderManager::LoadShaders(const char * vertex_file_path, const char * fragment_file_path)
+ShaderPtr ShaderLoader::LoadShaderFromFile(const std::string& vertexFilePath, const std::string& fragmentFilePath)
 {
+	const char * vertex_file_path = vertexFilePath.c_str();
+	const char * fragment_file_path = fragmentFilePath.c_str();
 	// Create the shaders
 	GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
 	GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
@@ -116,5 +99,5 @@ GLuint ShaderManager::LoadShaders(const char * vertex_file_path, const char * fr
 	glDeleteShader(VertexShaderID);
 	glDeleteShader(FragmentShaderID);
 
-	return ProgramID;
+	return ShaderPtr(new Shader(ProgramID));
 }

@@ -5,7 +5,7 @@
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
 
-#include "Shader\ShaderManager.h"
+#include "Shader\Shader.h"
 #include "GameStages\GameStageManager.h"
 #include "Drawing\WindowManager.h"
 #include "Textures\TextureManager.h"

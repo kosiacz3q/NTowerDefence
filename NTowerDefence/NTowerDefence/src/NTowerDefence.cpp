@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Shader\ShaderManager.h"
+#include "Shader\ShaderLoader.h"
 #include "GameManager.h"
 
 #include "GameStages\GameStageMap.h"
@@ -14,20 +14,28 @@ int main(void)
 
 	GameContextPtr gameContext = gameManager->getGameContext();
 
-	gameContext->shaderManager->loadShader(
+	ShaderLoader shaderLoader;
+
+	gameContext->shaderManager->InsertAsset(
 		"simpleProgram",
-		"shaders/vertex/SimpleVertexShader.vertexshader",
-		"shaders/fragment/SimpleFragmentShader.fragmentshader");
+		shaderLoader.LoadShaderFromFile(
+			"shaders/vertex/SimpleVertexShader.vertexshader",
+			"shaders/fragment/SimpleFragmentShader.fragmentshader"
+	));
 
-	gameContext->shaderManager->loadShader(
+	gameContext->shaderManager->InsertAsset(
 		"colouringProgram",
-		"shaders/vertex/TransformVertexShader.vertexshader",
-		"shaders/fragment/ColorFragmentShader.fragmentshader");
+		shaderLoader.LoadShaderFromFile(
+			"shaders/vertex/TransformVertexShader.vertexshader",
+			"shaders/fragment/ColorFragmentShader.fragmentshader"
+	));
 
-	gameContext->shaderManager->loadShader(
+	gameContext->shaderManager->InsertAsset(
 		"texturingProgram",
-		"shaders/vertex/TextureVertexShader.vertexshader",
-		"shaders/fragment/TextureFragmentShader.fragmentshader");
+		shaderLoader.LoadShaderFromFile(
+			"shaders/vertex/TextureVertexShader.vertexshader",
+			"shaders/fragment/TextureFragmentShader.fragmentshader"
+	));
 
 	gameContext->textureManager->loadTexture(
 		"simpleTexture",

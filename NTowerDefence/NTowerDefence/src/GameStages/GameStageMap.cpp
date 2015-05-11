@@ -23,10 +23,10 @@ GameStageMap::~GameStageMap()
 
 void GameStageMap::init()
 {
-	triangle = BaseGameObjectPtr(new TriangleObject(gameContext->shaderManager->getShader("simpleProgram")));
-	cube = BaseGameObjectPtr(new CubeObject(gameContext->shaderManager->getShader("colouringProgram")));
+	triangle = BaseGameObjectPtr(new TriangleObject(gameContext->shaderManager->getAsset("simpleProgram")));
+	cube = BaseGameObjectPtr(new CubeObject(gameContext->shaderManager->getAsset("colouringProgram")));
 	texturedCube = BaseGameObjectPtr(new TexturedCube(
-		gameContext->shaderManager->getShader("texturingProgram"),
+		gameContext->shaderManager->getAsset("texturingProgram"),
 		gameContext->textureManager->getTexture("simpleTexture")));
 
 	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
