@@ -34,13 +34,15 @@ void WindowManager::initGLFW()
 	// Open a window and create its OpenGL context
 	window = glfwCreateWindow(1024, 768, "NTowerDefence", NULL, NULL);
 
-	if (window == nullptr)
+	if (window == NULL)
 	{
 		glfwTerminate();
 		throw std::logic_error("Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible.\n");
 	}
-
-	glfwMakeContextCurrent(window);
+	else
+	{
+		glfwMakeContextCurrent(window);
+	}
 }
 
 void WindowManager::initGLEW()
