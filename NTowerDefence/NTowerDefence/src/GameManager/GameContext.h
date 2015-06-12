@@ -5,10 +5,10 @@
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
 
-#include "Shader\Shader.h"
-#include "GameStages\GameStageManager.h"
-#include "Drawing\WindowManager.h"
-#include "Textures\Texture.h"
+#include <Shader\Shader.h>
+#include <GameStages\GameStageManager.h>
+#include <Drawing\WindowManager.h>
+#include <Textures\Texture.h>
 
 typedef std::shared_ptr<GLFWwindow> GLFWwindowPtr;
 

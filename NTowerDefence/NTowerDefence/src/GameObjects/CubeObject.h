@@ -4,9 +4,8 @@
 
 #include <GL\glew.h>
 
-#include "..\Shader\Shader.h"
-
-#include "Base\BaseGameObject.h"
+#include <Shader\Shader.h>
+#include <Base\BaseGameObject.h>
 
 class CubeObject :
 	public BaseGameObject

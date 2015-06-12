@@ -4,7 +4,7 @@
 #include "Shader\ShaderLoader.h"
 #include "Textures\TexturesLoader.h"
 
-#include "GameManager.h"
+#include "GameManager\GameManager.h"
 
 #include "GameStages\GameStageMap.h"
 

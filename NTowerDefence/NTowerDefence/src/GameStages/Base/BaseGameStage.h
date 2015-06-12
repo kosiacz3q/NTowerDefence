@@ -5,7 +5,7 @@
 
 #include "GameStageState.h"
 
-#include "../src/GameObjects/Base/UpdateContext.hpp"
+#include <Base/UpdateContext.hpp>
 
 class BaseGameStage
 {

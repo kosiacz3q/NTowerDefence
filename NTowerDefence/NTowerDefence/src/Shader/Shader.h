@@ -1,10 +1,9 @@
 #pragma once
 
 #include <memory>
+#include <Base\GenericAssetsManager.h>
 
 #include <GL/glew.h>
-
-#include "..\Base\GenericAssetsManager.h"
 
 class Shader
 {

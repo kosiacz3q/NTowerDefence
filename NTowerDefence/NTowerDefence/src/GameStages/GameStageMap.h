@@ -1,17 +1,15 @@
 #pragma once
 
 #include "Base\BaseGameStage.h"
+#include <Base\UpdateContext.hpp>
+#include <Base\DrawingContext.hpp>
+#include <Base\BaseGameObject.h>
 
-#include "..\GameObjects\Base\UpdateContext.hpp"
-#include "..\GameObjects\Base\DrawingContext.hpp"
-#include "..\GameContext.h"
+#include <GameManager\GameContext.h>
+#include <Camera\StaticCamera.h>
 
-#include "..\GameObjects\Base\BaseGameObject.h"
-
-#include "..\Camera\StaticCamera.h"
-
-#include "..\Input\KeyboardHandler.h"
-#include "..\Input\MouseHandler.h"
+#include <Input\KeyboardHandler.h>
+#include <Input\MouseHandler.h>
 
 class GameStageMap : public BaseGameStage
 {

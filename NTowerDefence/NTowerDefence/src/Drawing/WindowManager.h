@@ -7,7 +7,7 @@
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
 
-#include "..\src\GameObjects\Base\IDrawable.h"
+#include <Base\IDrawable.h>
 
 class WindowManager
 {
