@@ -24,12 +24,12 @@ public:
     /*  Model Data */
 	vector<ModelTexture > textures_loaded;	// Stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.
     vector<Mesh> meshes;
-    string directory;
+    
     bool gammaCorrection;
 
     /*  Functions   */
     // Constructor, expects a filepath to a 3D model.
-	Model(const aiScene* scene, ShaderPtr shader);
+	Model(const aiScene* scene, ShaderPtr shader, std::string texturesPath);
 
 	void draw(DrawingContextPtr drawingContext);
 
@@ -39,6 +39,7 @@ public:
     
 private:
 	ShaderPtr shader;
+	string directory;
 
     /*  Functions   */
     // Loads a model with supported ASSIMP extensions from file and stores the resulting meshes in the meshes vector.

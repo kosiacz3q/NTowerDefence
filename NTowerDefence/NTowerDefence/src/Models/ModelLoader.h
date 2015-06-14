@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Model.h"
 #include <assimp\Importer.hpp>
+
+#include "Model.h"
 
 class ModelLoader
 {

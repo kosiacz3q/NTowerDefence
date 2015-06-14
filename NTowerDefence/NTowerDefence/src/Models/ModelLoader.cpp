@@ -4,15 +4,17 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+#include <string>
+
 ModelLoader::ModelLoader()
 {
-}
 
+}
 
 ModelLoader::~ModelLoader()
 {
-}
 
+}
 
 ModelPtr ModelLoader::LoadModel(const std::string& path, const ShaderPtr shader)
 {
@@ -25,5 +27,7 @@ ModelPtr ModelLoader::LoadModel(const std::string& path, const ShaderPtr shader)
 		throw std::logic_error(importer.GetErrorString());
 	}
 
-	return ModelPtr(new Model(scene , shader));
+	auto model = ModelPtr(new Model(scene, shader, path.substr(0, path.find_last_of('/'))));
+
+	return model;
 }

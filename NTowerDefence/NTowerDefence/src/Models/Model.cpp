@@ -20,8 +20,8 @@ using namespace std;
 
 GLint TextureFromFile(const char* path, string directory, bool gamma = false);
 
-Model::Model(const aiScene* scene, ShaderPtr shader) 
-	:shader(shader)
+Model::Model(const aiScene* scene, ShaderPtr shader, std::string texturesPath)
+	:shader(shader), directory(texturesPath)
 {
 	this->processNode(scene->mRootNode, scene);
 }
