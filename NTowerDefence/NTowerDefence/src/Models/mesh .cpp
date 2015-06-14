@@ -32,6 +32,7 @@ void Mesh::Draw(ShaderPtr shader)
     GLuint specularNr = 1;
     GLuint normalNr = 1;
     GLuint heightNr = 1;
+
     for(GLuint i = 0; i < this->textures.size(); i++)
     {
         glActiveTexture(GL_TEXTURE0 + i); // Active proper texture unit before binding

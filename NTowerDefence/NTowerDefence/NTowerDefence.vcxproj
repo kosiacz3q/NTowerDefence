@@ -96,7 +96,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Base\AssimpUtils.h" />
-    <ClInclude Include="src\Camera\Base\Camera.h" />
+    <ClInclude Include="src\Base\IKeyboardProcessor.h" />
+    <ClInclude Include="src\Base\ICamera.h" />
+    <ClInclude Include="src\Camera\MovableCamera.h" />
     <ClInclude Include="src\Camera\StaticCamera.h" />
     <ClInclude Include="src\Drawing\WindowManager.h" />
     <ClInclude Include="src\GameManager\GameContext.h" />
@@ -256,7 +258,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Base\AssimpUtils.cpp" />
-    <ClCompile Include="src\Camera\Base\Camera.cpp" />
+    <ClCompile Include="src\Camera\MovableCamera.cpp" />
     <ClCompile Include="src\Camera\StaticCamera.cpp" />
     <ClCompile Include="src\Drawing\WindowManager.cpp" />
     <ClCompile Include="src\GameObjects\TexturedCube.cpp" />

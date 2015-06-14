@@ -2,10 +2,10 @@
 
 #include <glm\glm.hpp>
 
-#include "Base\Camera.h"
+#include <Base\ICamera.h>
 
 class StaticCamera :
-	public Camera
+	public ICamera
 {
 public:
 	StaticCamera();

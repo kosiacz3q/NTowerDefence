@@ -71,6 +71,7 @@ void  GameStageMap::draw()
 	//texturedCube->draw(drawingContext);
 
 	//model->draw(drawingContext);
+	drawingContext->view = camera->getViewMatrix();
 
 	modelHouse->draw(drawingContext);
 
