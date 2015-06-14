@@ -95,6 +95,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="external\SOIL\SOIL.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="src\Base\AssimpUtils.h" />
     <ClInclude Include="src\Base\IKeyboardProcessor.h" />
     <ClInclude Include="src\Base\ICamera.h" />
@@ -252,7 +256,6 @@
     <ClInclude Include="external\GL\wglew.h" />
     <ClInclude Include="src\Base\DrawingContext.hpp" />
     <ClInclude Include="src\Base\UpdateContext.hpp" />
-    <ClInclude Include="src\Textures\soil\SOIL.h" />
     <ClInclude Include="src\Textures\Texture.h" />
     <ClInclude Include="src\Textures\TexturesLoader.h" />
     <ClInclude Include="stdafx.h" />
@@ -260,6 +263,10 @@
     <ClInclude Include="src\GameObjects\TriangleObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="external\SOIL\SOIL.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\Base\AssimpUtils.cpp" />
     <ClCompile Include="src\Camera\MovableCamera.cpp" />
     <ClCompile Include="src\Camera\StaticCamera.cpp" />

@@ -435,9 +435,6 @@
     <ClInclude Include="src\Textures\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Textures\soil\SOIL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Input\KeyboardHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -505,6 +502,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Base\Registerer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\SOIL\SOIL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -576,6 +576,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Camera\MovableCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external\SOIL\SOIL.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

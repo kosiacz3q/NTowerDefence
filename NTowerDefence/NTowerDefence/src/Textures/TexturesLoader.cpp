@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-#include "soil\SOIL.h"
+#include <SOIL\SOIL.h>
 
 TexturesLoader::TexturesLoader()
 {
@@ -23,7 +23,6 @@ TexturePtr TexturesLoader::loadTexture(std::string path)
 
 	if (result == 0)
 		throw std::logic_error("Error while loading texture " + std::string(SOIL_last_result()));
-
 
 	return TexturePtr(new Texture(result));
 }

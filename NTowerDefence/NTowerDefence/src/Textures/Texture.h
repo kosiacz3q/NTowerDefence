@@ -3,7 +3,7 @@
 #include <GL\glew.h>
 #include <memory>
 
-#include "..\Base\GenericAssetsManager.h"
+#include <Base\GenericAssetsManager.h>
 
 class Texture
 {
