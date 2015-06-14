@@ -489,6 +489,9 @@
     <ClInclude Include="src\GameManager\GameManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Models\mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\NTowerDefence.cpp">
@@ -555,6 +558,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Base\AssimpUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Models\mesh .cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -876,6 +882,13 @@
     <None Include="shaders\vertex\TransformVertexShader.vertexshader" />
     <None Include="shaders\fragment\TextureFragmentShader.fragmentshader" />
     <None Include="shaders\vertex\TextureVertexShader.vertexshader" />
+    <None Include="shaders\vertex\SimpleModelVertexShader.vertexshader" />
+    <None Include="shaders\fragment\SimpleModelFragmentShader.fragmentshader" />
+    <None Include="models\cubes_with_alpha.3DS" />
+    <None Include="shaders\fragment\VerySimpleShader.frag" />
+    <None Include="shaders\vertex\VerySimpleShader.vert" />
+    <None Include="shaders\fragment\WorkingModelShader.frag" />
+    <None Include="shaders\vertex\WorkingModelShader.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\uvtemplate.bmp">

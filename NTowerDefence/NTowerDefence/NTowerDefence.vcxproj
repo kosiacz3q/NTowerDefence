@@ -108,6 +108,7 @@
     <ClInclude Include="src\Base\GenericAssetsManager.h" />
     <ClInclude Include="src\Input\KeyboardHandler.h" />
     <ClInclude Include="src\Input\MouseHandler.h" />
+    <ClInclude Include="src\Models\mesh.h" />
     <ClInclude Include="src\Models\Model.h" />
     <ClInclude Include="src\Models\ModelLoader.h" />
     <ClInclude Include="src\Shader\ShaderLoader.h" />
@@ -262,6 +263,7 @@
     <ClCompile Include="src\GameStages\GameStageMap.cpp" />
     <ClCompile Include="src\Input\KeyboardHandler.cpp" />
     <ClCompile Include="src\Input\MouseHandler.cpp" />
+    <ClCompile Include="src\Models\mesh .cpp" />
     <ClCompile Include="src\Models\Model.cpp" />
     <ClCompile Include="src\Models\ModelLoader.cpp" />
     <ClCompile Include="src\Shader\ShaderLoader.cpp" />
@@ -387,12 +389,19 @@
     <None Include="external\glm\gtx\vector_query.inl" />
     <None Include="external\glm\gtx\verbose_operator.inl" />
     <None Include="external\glm\gtx\wrap.inl" />
+    <None Include="models\cubes_with_alpha.3DS" />
     <None Include="shaders\fragment\ColorFragmentShader.fragmentshader" />
     <None Include="shaders\fragment\SimpleFragmentShader.fragmentshader" />
+    <None Include="shaders\fragment\SimpleModelFragmentShader.fragmentshader" />
     <None Include="shaders\fragment\TextureFragmentShader.fragmentshader" />
+    <None Include="shaders\fragment\VerySimpleShader.frag" />
+    <None Include="shaders\fragment\WorkingModelShader.frag" />
+    <None Include="shaders\vertex\SimpleModelVertexShader.vertexshader" />
     <None Include="shaders\vertex\SimpleVertexShader.vertexshader" />
     <None Include="shaders\vertex\TextureVertexShader.vertexshader" />
     <None Include="shaders\vertex\TransformVertexShader.vertexshader" />
+    <None Include="shaders\vertex\VerySimpleShader.vert" />
+    <None Include="shaders\vertex\WorkingModelShader.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\uvtemplate.bmp" />

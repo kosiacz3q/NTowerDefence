@@ -10,6 +10,7 @@ GameManager::GameManager()
 	gameContext->shaderManager = ShaderManagerPtr(new ShaderManager());
 	gameContext->windowHandler = WindowManagerPtr(new WindowManager());
 	gameContext->textureManager = TextureManagerPtr(new TextureManager());
+	gameContext->modelManager = ModelManagerPtr(new ModelManager());
 }
 
 GameManager::~GameManager()
@@ -29,9 +30,8 @@ void GameManager::run()
 
 	do
 	{
-		stageManager->iterate();
 		glfwPollEvents();
-		
+		stageManager->iterate();
 	} while (
 		glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
 		glfwWindowShouldClose(window) == 0);

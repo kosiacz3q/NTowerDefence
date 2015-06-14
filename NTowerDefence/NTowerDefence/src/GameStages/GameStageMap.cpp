@@ -1,8 +1,8 @@
 #include "GameStageMap.h"
 
-#include "..\GameObjects\TriangleObject.h"
-#include "..\GameObjects\CubeObject.h"
-#include "..\GameObjects\TexturedCube.h"
+#include <GameObjects\TriangleObject.h>
+#include <GameObjects\CubeObject.h>
+#include <GameObjects\TexturedCube.h>
 
 GameStageMap::GameStageMap(GameContextPtr gameContext)
 	:gameContext(gameContext)
@@ -29,6 +29,10 @@ void GameStageMap::init()
 		gameContext->shaderManager->getAsset("texturingProgram"),
 		gameContext->textureManager->getAsset("simpleTexture")));
 
+	//model = gameContext->modelManager->getAsset("transparentModel");
+
+	modelHouse = gameContext->modelManager->getAsset("houseModel");
+
 	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
 	drawingContext->projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
 	// Or, for an ortho camera :
@@ -46,6 +50,8 @@ void GameStageMap::onBegin()
 	triangle->init();
 	cube->init();
 	texturedCube->init();
+	//model->init();
+	modelHouse->init();
 
 	state = GameStageState::ACTIVE;
 }
@@ -62,7 +68,11 @@ void  GameStageMap::draw()
 
 	//triangle->draw(drawingContext);
 	//cube->draw(drawingContext);
-	texturedCube->draw(drawingContext);
+	//texturedCube->draw(drawingContext);
+
+	//model->draw(drawingContext);
+
+	modelHouse->draw(drawingContext);
 
 	glfwSwapBuffers(window);
 }

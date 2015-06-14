@@ -2,15 +2,11 @@
 
 #include <memory>
 
-#include <GL\glew.h>
-#include <GLFW\glfw3.h>
-
 #include <Shader\Shader.h>
 #include <GameStages\GameStageManager.h>
 #include <Drawing\WindowManager.h>
 #include <Textures\Texture.h>
-
-typedef std::shared_ptr<GLFWwindow> GLFWwindowPtr;
+#include <Models\Model.h>
 
 class GameContext
 {
@@ -20,6 +16,7 @@ public:
 
 	TextureManagerPtr textureManager;
 	ShaderManagerPtr shaderManager;
+	ModelManagerPtr modelManager;
 };
 
 typedef std::shared_ptr<GameContext> GameContextPtr;

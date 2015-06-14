@@ -11,6 +11,8 @@
 #include <Input\KeyboardHandler.h>
 #include <Input\MouseHandler.h>
 
+#include <Models\Model.h>
+
 class GameStageMap : public BaseGameStage
 {
 public:
@@ -58,6 +60,9 @@ private:
 	GameContextPtr gameContext;
 
 	const std::string id = "GAME_STAGE_MAP";
+
+	BaseGameObjectPtr model;
+	BaseGameObjectPtr modelHouse;
 
 	GameStageState state;
 };

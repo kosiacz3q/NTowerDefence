@@ -9,7 +9,21 @@ namespace AssimpUtils
 
 	void color4_to_float4(const aiColor4D *c, float f[4]);
 
-	struct MyMesh;
+	struct MyMesh
+	{
+		GLuint vao;
+		GLuint texIndex;
+		GLuint uniformBlockIndex;
+		int numFaces;
+	};
 
-	struct MyMaterial;
+	struct MyMaterial
+	{
+		float diffuse[4];
+		float ambient[4];
+		float specular[4];
+		float emissive[4];
+		float shininess;
+		int texCount;
+	};
 }

@@ -1,4 +1,4 @@
-#include "AssimpUtils.h"
+#include  "AssimpUtils.h"
 
 namespace AssimpUtils
 {
@@ -17,22 +17,4 @@ namespace AssimpUtils
 		f[2] = c->b;
 		f[3] = c->a;
 	}
-
-	struct MyMesh
-	{
-		GLuint vao;
-		GLuint texIndex;
-		GLuint uniformBlockIndex;
-		int numFaces;
-	};
-
-	struct MyMaterial
-	{
-		float diffuse[4];
-		float ambient[4];
-		float specular[4];
-		float emissive[4];
-		float shininess;
-		int texCount;
-	};
 }

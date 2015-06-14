@@ -9,7 +9,7 @@ public:
 	ModelLoader();
 	virtual ~ModelLoader();
 
-	ModelPtr LoadModel(const std::string& path);
+	ModelPtr LoadModel(const std::string& path, const ShaderPtr shader);
 
 private:
 
