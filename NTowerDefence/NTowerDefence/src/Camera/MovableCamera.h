@@ -10,11 +10,15 @@
 
 #include <Base\ICamera.h>
 #include <Base\IKeyboardProcessor.h>
+#include <Base\IMouseMovementProcessor.h>
+#include <Base\IMouseScrollProcessor.h>
 
 // An abstract MovableCamera class that processes input and calculates the corresponding Eular Angles, Vectors and Matrices for use in OpenGL
 class MovableCamera
 	: public ICamera
 	, public IKeyboardPocessor
+	, public IMouseMovementProcessor
+	, public IMouseScrollProcessor
 {
 public:
     // MovableCamera Attributes
