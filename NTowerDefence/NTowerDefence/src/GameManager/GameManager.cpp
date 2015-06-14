@@ -9,6 +9,11 @@ GameManager::GameManager()
 	gameContext->gameStageManager = GameStageManagerPtr(new GameStageManager());
 	gameContext->shaderManager = ShaderManagerPtr(new ShaderManager());
 	gameContext->windowHandler = WindowManagerPtr(new WindowManager());
+
+	gameContext->keyboardRegisterer = gameContext->windowHandler;
+	gameContext->mouseMovementRegisterer = gameContext->windowHandler;
+	gameContext->mouseScrollRegisterer = gameContext->windowHandler;
+
 	gameContext->textureManager = TextureManagerPtr(new TextureManager());
 	gameContext->modelManager = ModelManagerPtr(new ModelManager());
 }

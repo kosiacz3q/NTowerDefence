@@ -98,6 +98,9 @@
     <ClInclude Include="src\Base\AssimpUtils.h" />
     <ClInclude Include="src\Base\IKeyboardProcessor.h" />
     <ClInclude Include="src\Base\ICamera.h" />
+    <ClInclude Include="src\Base\IMouseMovementProcessor.h" />
+    <ClInclude Include="src\Base\IMouseScrollProcessor.h" />
+    <ClInclude Include="src\Base\Registerer.h" />
     <ClInclude Include="src\Camera\MovableCamera.h" />
     <ClInclude Include="src\Camera\StaticCamera.h" />
     <ClInclude Include="src\Drawing\WindowManager.h" />

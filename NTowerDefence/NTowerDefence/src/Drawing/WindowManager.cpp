@@ -2,9 +2,11 @@
 
 #include <stdexcept>
 
+WindowManagerPtr WindowManager::activeWindowManager = nullptr;
+
 WindowManager::WindowManager()
 {
-
+	activeWindowManager = WindowManagerPtr(this);
 }
 
 WindowManager::~WindowManager()
@@ -31,6 +33,8 @@ void WindowManager::initGLFW()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+	
+
 	// Open a window and create its OpenGL context
 	window = glfwCreateWindow(1024, 768, "NTowerDefence", NULL, NULL);
 
@@ -42,6 +46,11 @@ void WindowManager::initGLFW()
 	else
 	{
 		glfwMakeContextCurrent(window);
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+
+		glfwSetKeyCallback(window, WindowManager::key_callback);
+		glfwSetCursorPosCallback(window, WindowManager::mouse_callback);
+		glfwSetScrollCallback(window, WindowManager::scroll_callback);
 	}
 }
 
@@ -70,4 +79,41 @@ void WindowManager::setGlStates()
 	//glEnable(GL_TEXTURE_2D);
 
 	//glDisable(GL_LIGHTING);
+}
+
+
+void WindowManager::key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+
+}
+
+bool firstMouse = true;
+GLfloat lastX = 400, lastY = 300;
+
+void WindowManager::mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	if (firstMouse)
+	{
+		lastX = xpos;
+		lastY = ypos;
+		firstMouse = false;
+	}
+
+	GLfloat xoffset = xpos - lastX;
+	GLfloat yoffset = lastY - ypos;
+
+	lastX = xpos;
+	lastY = ypos;
+
+	auto container = ((Registerer<IMouseMovementProcessorPtr>)*activeWindowManager).getContainer();
+
+	for (auto obj : *container)
+	{
+		obj.second->ProcessMouseMovement(xoffset, yoffset);
+	}
+}
+
+void WindowManager::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	//camera.ProcessMouseScroll(yoffset);
 }

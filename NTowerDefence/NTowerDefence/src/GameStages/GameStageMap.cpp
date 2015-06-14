@@ -9,7 +9,8 @@ GameStageMap::GameStageMap(GameContextPtr gameContext)
 {
 	drawingContext = DrawingContextPtr(new DrawingContext());
 
-	camera = StaticCameraPtr(new StaticCamera());
+	//camera = StaticCameraPtr(new StaticCamera());
+	camera = MovableCameraPtr(new MovableCamera(glm::vec3(0.0f, 0.0f, 3.0f)));
 
 	keyboard = KeyboardHandlerPtr(new KeyboardHandler());
 	mouse = MouseHandlerPtr(new MouseHandler(gameContext->windowHandler->getWindow()));
@@ -34,13 +35,17 @@ void GameStageMap::init()
 	modelHouse = gameContext->modelManager->getAsset("houseModel");
 
 	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-	drawingContext->projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+	//drawingContext->projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+	drawingContext->projection = glm::perspective(camera->Zoom, (float)900 / (float)600, 0.1f, 100.0f);
+	
 	// Or, for an ortho camera :
 	//glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,0.0f,100.0f); // In world coordinates
 
-	camera->setPosition(glm::vec3(4, 3, 3), glm::vec3(-4, -3, -3));
+	//camera->setPosition(glm::vec3(4, 3, 3), glm::vec3(-4, -3, -3));
 
 	state = GameStageState::READY;
+
+	gameContext->mouseMovementRegisterer->registerObject("camera", camera);
 }
 
 void GameStageMap::onBegin()
@@ -59,6 +64,8 @@ void GameStageMap::onBegin()
 void GameStageMap::onClose()
 {
 	state = GameStageState::READY;
+
+	gameContext->mouseMovementRegisterer->deregisterAll();
 }
 
 void  GameStageMap::draw()

@@ -6,7 +6,10 @@
 #include <Base\BaseGameObject.h>
 
 #include <GameManager\GameContext.h>
-#include <Camera\StaticCamera.h>
+
+
+//#include <Camera\StaticCamera.h>
+#include <Camera\MovableCamera.h>
 
 #include <Input\KeyboardHandler.h>
 #include <Input\MouseHandler.h>
@@ -47,7 +50,9 @@ private:
 	DrawingContextPtr drawingContext;
 	UpdateContextPtr updateContext;
 
-	StaticCameraPtr camera;
+	//StaticCameraPtr camera;
+	MovableCameraPtr camera;
+	
 
 	KeyboardHandlerPtr keyboard;
 	MouseHandlerPtr mouse;

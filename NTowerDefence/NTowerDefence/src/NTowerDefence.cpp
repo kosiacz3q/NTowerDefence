@@ -80,8 +80,8 @@ int main(void)
 	gameContext->modelManager->InsertAsset(
 		"houseModel",
 		modelLoader.LoadModel(
-		"models/nanosuit/nanosuit.obj",
-		gameContext->shaderManager->getAsset("workingModelShader"))
+			"models/nanosuit/nanosuit.obj",
+			gameContext->shaderManager->getAsset("workingModelShader"))
 	);
 
 	gameContext->gameStageManager->registerStage(BaseGameStagePtr(new GameStageMap(gameContext)));

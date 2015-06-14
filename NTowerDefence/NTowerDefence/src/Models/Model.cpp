@@ -31,12 +31,12 @@ void Model::draw(DrawingContextPtr drawingContext)
 	glUseProgram(shader->getId());
 
 	glUniformMatrix4fv(glGetUniformLocation(shader->getId(), "projection"), 1, GL_FALSE, glm::value_ptr(drawingContext->projection));
-	glUniformMatrix4fv(glGetUniformLocation(shader->getId(), "view"), 1, GL_FALSE, glm::value_ptr(drawingContext->projection));
+	glUniformMatrix4fv(glGetUniformLocation(shader->getId(), "view"), 1, GL_FALSE, glm::value_ptr(drawingContext->view));
 
 	// Draw the loaded model
 	glm::mat4 model;
-	model = glm::translate(model, glm::vec3(0.0f, 0.f, 0.0f)); // Translate it down a bit so it's at the center of the scene
-	model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));	// It's a bit too big for our scene, so scale it down
+	model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f)); // Translate it down a bit so it's at the center of the scene
+	model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	// It's a bit too big for our scene, so scale it down
 	glUniformMatrix4fv(glGetUniformLocation(shader->getId(), "model"), 1, GL_FALSE, glm::value_ptr(model));
 
 	for (GLuint i = 0; i < this->meshes.size(); i++)

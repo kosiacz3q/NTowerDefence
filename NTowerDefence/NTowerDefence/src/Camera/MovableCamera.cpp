@@ -2,16 +2,7 @@
 
 #include "MovableCamera.h"
 
-
-// Default MovableCamera values
-const GLfloat YAW        = -90.0f;
-const GLfloat PITCH      =  0.0f;
-const GLfloat SPEED      =  3.0f;
-const GLfloat SENSITIVTY =  0.25f;
-const GLfloat ZOOM       =  45.0f;
-
-
-MovableCamera::MovableCamera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), GLfloat yaw = YAW, GLfloat pitch = PITCH) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)
+MovableCamera::MovableCamera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfloat pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)
 {
     this->Position = position;
     this->WorldUp = up;
@@ -30,9 +21,14 @@ MovableCamera::MovableCamera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat u
 }
 
     // Returns the view matrix calculated using Eular Angles and the LookAt Matrix
-glm::mat4 MovableCamera::GetViewMatrix()
+glm::mat4x4 MovableCamera::getViewMatrix()
 {
     return glm::lookAt(this->Position, this->Position + this->Front, this->Up);
+}
+
+void MovableCamera::update(float elapsedTime)
+{
+
 }
 
     // Processes input received from any keyboard-like input system. Accepts input parameter in the form of MovableCamera defined ENUM (to abstract it from windowing systems)
@@ -50,7 +46,7 @@ void MovableCamera::ProcessKeyboard(ACTIVE_INPUT direction, float deltaTime)
 }
 
 // Processes input received from a mouse input system. Expects the offset value in both the x and y direction.
-void MovableCamera::ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch = true)
+void MovableCamera::ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch)
 {
     xoffset *= this->MouseSensitivity;
     yoffset *= this->MouseSensitivity;
