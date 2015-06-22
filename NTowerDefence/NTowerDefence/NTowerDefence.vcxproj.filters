@@ -578,9 +578,6 @@
     <ClCompile Include="src\Camera\MovableCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="external\SOIL\SOIL.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\debug\glfw3.lib" />
