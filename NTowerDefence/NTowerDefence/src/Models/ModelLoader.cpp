@@ -22,7 +22,7 @@ ModelPtr ModelLoader::LoadModel(const std::string& path, const ShaderPtr shader)
 
 	const aiScene* scene = importer.ReadFile(path, aiProcessPreset_TargetRealtime_Quality);
 
-	if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
+	if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 	{
 		throw std::logic_error(importer.GetErrorString());
 	}
