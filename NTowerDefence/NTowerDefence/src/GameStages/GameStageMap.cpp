@@ -58,6 +58,9 @@ void GameStageMap::onBegin()
 	//model->init();
 	modelHouse->init();
 
+	modelHouse->translateTo(glm::vec3(0.0f, -1.75f, 0.0f));
+	modelHouse->scale(glm::vec3(0.2f, 0.2f, 0.2f));
+
 	state = GameStageState::ACTIVE;
 }
 

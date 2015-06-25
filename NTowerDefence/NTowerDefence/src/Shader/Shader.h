@@ -5,6 +5,8 @@
 
 #include <GL/glew.h>
 
+#include <glm\glm.hpp>
+
 class Shader
 {
 public:
@@ -13,6 +15,13 @@ public:
 	inline GLuint getId()
 	{
 		return programId;
+	}
+
+	void setMVP(const glm::mat4& model, const glm::mat4& view, const glm::mat4& projection);
+	
+	inline void activate()
+	{
+		glUseProgram(programId);
 	}
 
 	virtual ~Shader();

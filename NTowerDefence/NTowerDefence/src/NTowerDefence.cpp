@@ -80,7 +80,8 @@ int main(void)
 	gameContext->modelManager->InsertAsset(
 		"houseModel",
 		modelLoader.LoadModel(
-			"models/nanosuit/nanosuit.obj",
+			//"models/nanosuit/nanosuit.obj",
+			"models/house/house.obj",
 			gameContext->shaderManager->getAsset("workingModelShader"))
 	);
 

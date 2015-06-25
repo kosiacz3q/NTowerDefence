@@ -1,5 +1,5 @@
 ========================================================================
-    CONSOLE APPLICATION : NTowerDefence Project Overview
+    NTowerDefence Project Overview
 ========================================================================
 
 AppWizard has created this NTowerDefence application for you.
