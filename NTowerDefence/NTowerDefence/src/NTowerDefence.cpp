@@ -62,10 +62,10 @@ int main(void)
 	));
 
 	TexturesLoader texturesLoader;
-
+	/*
 	gameContext->textureManager->InsertAsset(
 		"simpleTexture",
-		texturesLoader.loadTexture("textures/uvtemplate.dds"));
+		texturesLoader.loadTexture("textures/uvtemplate.dds"));*/
 
 	ModelLoader modelLoader;
 
@@ -81,7 +81,10 @@ int main(void)
 		"houseModel",
 		modelLoader.LoadModel(
 			//"models/nanosuit/nanosuit.obj",
-			"models/house/house.obj",
+			//"models/house/house.obj",
+			//"models/trees/palmTree/Palm_Tree.obj",
+			//"models/trees/Tree1/Tree.obj",
+			"models/trees/datePalm/DatePalm.obj",
 			gameContext->shaderManager->getAsset("workingModelShader"))
 	);
 

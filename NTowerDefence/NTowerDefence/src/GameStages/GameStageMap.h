@@ -11,9 +11,6 @@
 //#include <Camera\StaticCamera.h>
 #include <Camera\MovableCamera.h>
 
-#include <Input\KeyboardHandler.h>
-#include <Input\MouseHandler.h>
-
 #include <Models\Model.h>
 
 class GameStageMap : public BaseGameStage
@@ -52,10 +49,6 @@ private:
 
 	//StaticCameraPtr camera;
 	MovableCameraPtr camera;
-	
-
-	KeyboardHandlerPtr keyboard;
-	MouseHandlerPtr mouse;
 
 	typedef std::set<IDrawablePtr> DrawableContainer;
 	DrawableContainer drawableContainer;

@@ -435,12 +435,6 @@
     <ClInclude Include="src\Textures\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Input\KeyboardHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\MouseHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Camera\StaticCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -540,12 +534,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Textures\Texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\KeyboardHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\MouseHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Camera\StaticCamera.cpp">

@@ -10,10 +10,7 @@ GameStageMap::GameStageMap(GameContextPtr gameContext)
 	drawingContext = DrawingContextPtr(new DrawingContext());
 
 	//camera = StaticCameraPtr(new StaticCamera());
-	camera = MovableCameraPtr(new MovableCamera(glm::vec3(0.0f, 0.0f, 3.0f)));
-
-	keyboard = KeyboardHandlerPtr(new KeyboardHandler());
-	mouse = MouseHandlerPtr(new MouseHandler(gameContext->windowHandler->getWindow()));
+	camera = MovableCameraPtr(new MovableCamera(glm::vec3(0.0f, 1.0f, 1.0f)));
 
 	state = GameStageState::NOT_INITIALIZED;
 }
@@ -24,11 +21,11 @@ GameStageMap::~GameStageMap()
 
 void GameStageMap::init()
 {
-	triangle = BaseGameObjectPtr(new TriangleObject(gameContext->shaderManager->getAsset("simpleProgram")));
-	cube = BaseGameObjectPtr(new CubeObject(gameContext->shaderManager->getAsset("colouringProgram")));
-	texturedCube = BaseGameObjectPtr(new TexturedCube(
-		gameContext->shaderManager->getAsset("texturingProgram"),
-		gameContext->textureManager->getAsset("simpleTexture")));
+	//triangle = BaseGameObjectPtr(new TriangleObject(gameContext->shaderManager->getAsset("simpleProgram")));
+	//cube = BaseGameObjectPtr(new CubeObject(gameContext->shaderManager->getAsset("colouringProgram")));
+	//texturedCube = BaseGameObjectPtr(new TexturedCube(
+	//	gameContext->shaderManager->getAsset("texturingProgram"),
+	//	gameContext->textureManager->getAsset("simpleTexture")));
 
 	//model = gameContext->modelManager->getAsset("transparentModel");
 
@@ -43,23 +40,24 @@ void GameStageMap::init()
 
 	//camera->setPosition(glm::vec3(4, 3, 3), glm::vec3(-4, -3, -3));
 
-	state = GameStageState::READY;
-
 	gameContext->mouseMovementRegisterer->registerObject("camera", camera);
+
+	state = GameStageState::READY;
 }
 
 void GameStageMap::onBegin()
 {
 	window = gameContext->windowHandler->getWindow();
 
-	triangle->init();
-	cube->init();
-	texturedCube->init();
+	//triangle->init();
+	//cube->init();
+	//texturedCube->init();
 	//model->init();
 	modelHouse->init();
-
-	modelHouse->translateTo(glm::vec3(0.0f, -1.75f, 0.0f));
-	modelHouse->scale(glm::vec3(0.2f, 0.2f, 0.2f));
+	
+	
+	modelHouse->translateTo(glm::vec3(0.0f, 2.f, 0.0f));
+	modelHouse->scale(glm::vec3(0.2, 0.2, 0.2));
 
 	state = GameStageState::ACTIVE;
 }
