@@ -40,10 +40,14 @@ void GameManager::run()
 	{
 		glfwPollEvents();
 		stageManager->iterate();
-	} while (
+	} while 
+	(
 		glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
-		glfwWindowShouldClose(window) == 0);
+		glfwWindowShouldClose(window) == 0
+	);
 
 	if (gameContext->gameStageManager->getActiveStage())
+	{
 		gameContext->gameStageManager->getActiveStage()->onClose();
+	}
 }

@@ -20,7 +20,8 @@ ModelPtr ModelLoader::LoadModel(const std::string& path, const ShaderPtr shader)
 {
 	Assimp::Importer importer;
 
-	const aiScene* scene = importer.ReadFile(path, aiProcessPreset_TargetRealtime_Quality);
+	const aiScene* scene = importer.ReadFile(path, 
+		aiProcess_Triangulate | aiProcessPreset_TargetRealtime_Quality);
 
 	if (scene == nullptr 
 		|| scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE 

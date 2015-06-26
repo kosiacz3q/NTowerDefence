@@ -55,9 +55,20 @@ void Mesh::Draw(ShaderPtr shader)
         glBindTexture(GL_TEXTURE_2D, this->textures[i].id);
     }
         
-    // Draw mesh
-    glBindVertexArray(this->VAO);
+	
+	glBindVertexArray(this->VAO);
+
+	// Set the vertex attribute pointers
+	// Vertex Positions
+	glEnableVertexAttribArray(0);
+
+	glEnableVertexAttribArray(1);
+
+	glEnableVertexAttribArray(2);
+
+
     glDrawElements(GL_TRIANGLES, this->indices.size(), GL_UNSIGNED_INT, 0);
+	
     glBindVertexArray(0);
 
     // Always good practice to set everything back to defaults once configured.
@@ -70,21 +81,16 @@ void Mesh::Draw(ShaderPtr shader)
 
 void Mesh::setupMesh()
 {
-    // Create buffers/arrays
     glGenVertexArrays(1, &this->VAO);
-    glGenBuffers(1, &this->VBO);
-    glGenBuffers(1, &this->EBO);
+	glBindVertexArray(this->VAO);
 
-    glBindVertexArray(this->VAO);
+    glGenBuffers(1, &this->VBO);
     // Load data into vertex buffers
     glBindBuffer(GL_ARRAY_BUFFER, this->VBO);
     // A great thing about structs is that their memory layout is sequential for all its items.
     // The effect is that we can simply pass a pointer to the struct and it translates perfectly to a glm::vec3/2 array which
     // again translates to 3/2 floats which translates to a byte array.
     glBufferData(GL_ARRAY_BUFFER, this->vertices.size() * sizeof(Vertex), &this->vertices[0], GL_STATIC_DRAW);  
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->indices.size() * sizeof(GLuint), &this->indices[0], GL_STATIC_DRAW);
 
     // Set the vertex attribute pointers
     // Vertex Positions
@@ -102,6 +108,10 @@ void Mesh::setupMesh()
     // Vertex Bitangent
     glEnableVertexAttribArray(4);
     glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, Bitangent));
+
+	glGenBuffers(1, &this->EBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->indices.size() * sizeof(GLuint), &this->indices[0], GL_STATIC_DRAW);
 
     glBindVertexArray(0);
 }

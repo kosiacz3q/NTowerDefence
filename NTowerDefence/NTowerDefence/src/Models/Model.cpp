@@ -89,6 +89,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
 		vector.z = mesh->mNormals[i].z;
 		vertex.Normal = vector;
 		// Texture Coordinates
+
 		if(mesh->mTextureCoords[0]) // Does the mesh contain texture coordinates?
 		{
 			glm::vec2 vec;
@@ -99,7 +100,10 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
 			vertex.TexCoords = vec;
 		}
 		else
+		{
 			vertex.TexCoords = glm::vec2(0.0f, 0.0f);
+		}
+
 		// Tangent
 		vector.x = mesh->mTangents[i].x;
 		vector.y = mesh->mTangents[i].y;
@@ -154,6 +158,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
 vector<ModelTexture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName)
 {
 	vector<ModelTexture> textures;
+
 	for(GLuint i = 0; i < mat->GetTextureCount(type); i++)
 	{
 		aiString str;
@@ -169,6 +174,7 @@ vector<ModelTexture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType 
 				break;
 			}
 		}
+
 		if(!skip)
 		{   // If texture hasn't been loaded already, load it
 			ModelTexture texture;
@@ -179,29 +185,18 @@ vector<ModelTexture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType 
 			this->textures_loaded.push_back(texture);  // Store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
 		}
 	}
+
 	return textures;
 }
 
 GLint TextureFromFile(const char* path, string directory, bool gamma)
 {
-	 //Generate texture ID and load texture data 
 	string filename = string(path);
 	filename = directory + '/' + filename;
-	GLuint textureID;
-	glGenTextures(1, &textureID);
-	int width,height;
-	unsigned char* image = SOIL_load_image(filename.c_str(), &width, &height, 0, SOIL_LOAD_RGB);
-	// Assign texture to ID
-	glBindTexture(GL_TEXTURE_2D, textureID);
-	glTexImage2D(GL_TEXTURE_2D, 0, gamma ? GL_SRGB : GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-	glGenerateMipmap(GL_TEXTURE_2D);	
 
-	// Parameters
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR );
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glBindTexture(GL_TEXTURE_2D, 0);
-	SOIL_free_image_data(image);
-	return textureID;
+	return SOIL_load_OGL_texture(
+		filename.c_str(),
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT);
 }
