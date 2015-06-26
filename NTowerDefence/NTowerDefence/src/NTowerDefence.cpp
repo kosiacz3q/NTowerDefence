@@ -97,7 +97,9 @@ int main(void)
 			//"models/house/house.obj",
 			//"models/trees/palmTree/Palm_Tree.obj",
 			//"models/trees/Tree1/Tree.obj",
-			"models/trees/datePalm/DatePalm.obj",
+			//"models/trees/datePalm/DatePalm.obj",
+			//"models/trees/datePalm/DatePalm.3ds",
+			"models/house/house.3ds",
 			gameContext->shaderManager->getAsset("workingModelShader"))
 	);
 

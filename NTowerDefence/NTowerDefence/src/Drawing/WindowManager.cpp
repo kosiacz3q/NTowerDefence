@@ -88,8 +88,6 @@ void WindowManager::setGlStates()
 
 void WindowManager::key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
-	printf("key=%i scancode=%i action=%i mode=%i\n", key, scancode, action, mode);
-
 	auto container = ((Registerer<IKeyboardPocessorPtr>)*activeWindowManager).getContainer();
 
 	for (auto obj : *container)

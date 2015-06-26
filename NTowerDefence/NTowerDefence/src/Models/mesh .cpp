@@ -2,15 +2,15 @@
 
 #include "mesh.h"
 
-// Std. Includes
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <vector>
+
 using namespace std;
-// GL Includes
-#include <GL/glew.h> // Contains all the necessery OpenGL includes
+
+#include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -35,7 +35,7 @@ void Mesh::Draw(ShaderPtr shader)
 
     for(GLuint i = 0; i < this->textures.size(); i++)
     {
-        glActiveTexture(GL_TEXTURE0 + i); // Active proper texture unit before binding
+         glActiveTexture(GL_TEXTURE0 + i); // Active proper texture unit before binding
         // Retrieve texture number (the N in diffuse_textureN)
         stringstream ss;
         string number;
