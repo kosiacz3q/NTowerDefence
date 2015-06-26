@@ -7,10 +7,12 @@
 #include <Drawing\WindowManager.h>
 #include <Textures\Texture.h>
 #include <Models\Model.h>
+#include <Input\KeyBindingsHandler.h>
 
-#include <Base\IKeyboardProcessor.h>
-#include <Base\IMouseMovementProcessor.h>
-#include <Base\IMouseScrollProcessor.h>
+#include <Input\IKeyboardProcessor.h>
+#include <Input\IMouseMovementProcessor.h>
+#include <Input\IMouseScrollProcessor.h>
+
 
 #include <Base\Registerer.h>
 
@@ -24,6 +26,7 @@ public:
 	TextureManagerPtr textureManager;
 	ShaderManagerPtr shaderManager;
 	ModelManagerPtr modelManager;
+	KeyBindingsHandlerPtr keyBindingsHandler;
 
 	std::shared_ptr<Registerer<IKeyboardPocessorPtr> > keyboardRegisterer;
 	std::shared_ptr<Registerer<IMouseMovementProcessorPtr> > mouseMovementRegisterer;

@@ -11,9 +11,10 @@
 
 #include <Base\DrawingContext.hpp>
 
-#include <Base\IKeyboardProcessor.h>
-#include <Base\IMouseMovementProcessor.h>
-#include <Base\IMouseScrollProcessor.h>
+#include <Input\IKeyboardProcessor.h>
+#include <Input\IMouseMovementProcessor.h>
+#include <Input\IMouseScrollProcessor.h>
+#include <Input\KeyBindingsHandler.h>
 
 #include <Base\Registerer.h>
 
@@ -27,7 +28,7 @@ class WindowManager
 {
 public:
 
-	WindowManager();
+	WindowManager(KeyBindingsHandlerPtr keyBindingsHandler);
 	virtual ~WindowManager();
 
 	inline GLFWwindow* getWindow()
@@ -46,7 +47,7 @@ private:
 
 	GLFWwindow* window;
 	DrawingContextPtr drawingContext;
-
+		
 	bool running;
 	bool isWindowManagerReady;
 
@@ -54,6 +55,12 @@ private:
 	static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 	static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
+	//to jest slabe, mozna wyciagnac caly input handler jako statyczna klase
+	//i jakis globalny inkrementator sluzacy do wyciagania okreslonego
+	//managera po indeksie
+	//ze wzgledu na slaba implementacje obslugi opengla z tymi wiesniackimi
+	//wskaznikami do funkcji nie da sie inaczej (chyba)
 	static WindowManagerPtr activeWindowManager;
+	static KeyBindingsHandlerPtr keyBindingsHandler;
 };
 

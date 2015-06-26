@@ -17,6 +17,19 @@ int main(void)
 
 	GameContextPtr gameContext = gameManager->getGameContext();
 
+	gameContext->keyBindingsHandler->setBinding(
+	{	
+		make_pair('W', ACTIVE_INPUT::FORWARD),
+		make_pair('w', ACTIVE_INPUT::FORWARD),
+		make_pair('S', ACTIVE_INPUT::BACKWARD),
+		make_pair('s', ACTIVE_INPUT::BACKWARD),
+		make_pair('A', ACTIVE_INPUT::LEFT),
+		make_pair('a', ACTIVE_INPUT::LEFT),
+		make_pair('D', ACTIVE_INPUT::RIGHT),
+		make_pair('d', ACTIVE_INPUT::RIGHT) 
+	}
+	);
+
 	ShaderLoader shaderLoader;
 
 	gameContext->shaderManager->InsertAsset(

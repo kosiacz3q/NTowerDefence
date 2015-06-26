@@ -8,9 +8,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <Base\ICamera.h>
-#include <Base\IKeyboardProcessor.h>
-#include <Base\IMouseMovementProcessor.h>
-#include <Base\IMouseScrollProcessor.h>
+
+#include <Input\IKeyboardProcessor.h>
+#include <Input\IMouseMovementProcessor.h>
+#include <Input\IMouseScrollProcessor.h>
 
 // Default MovableCamera values
 const GLfloat YAW = -90.0f;

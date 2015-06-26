@@ -8,7 +8,10 @@ GameManager::GameManager()
 	gameContext = GameContextPtr(new GameContext());
 	gameContext->gameStageManager = GameStageManagerPtr(new GameStageManager());
 	gameContext->shaderManager = ShaderManagerPtr(new ShaderManager());
-	gameContext->windowHandler = WindowManagerPtr(new WindowManager());
+
+	gameContext->keyBindingsHandler = KeyBindingsHandlerPtr(new KeyBindingsHandler());
+
+	gameContext->windowHandler = WindowManagerPtr(new WindowManager(gameContext->keyBindingsHandler));
 
 	gameContext->keyboardRegisterer = gameContext->windowHandler;
 	gameContext->mouseMovementRegisterer = gameContext->windowHandler;
@@ -41,6 +44,6 @@ void GameManager::run()
 		glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
 		glfwWindowShouldClose(window) == 0);
 
-	if (gameContext->gameStageManager->getActiveStage() != nullptr)
+	if (gameContext->gameStageManager->getActiveStage())
 		gameContext->gameStageManager->getActiveStage()->onClose();
 }

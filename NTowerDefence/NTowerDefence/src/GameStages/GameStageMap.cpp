@@ -41,6 +41,7 @@ void GameStageMap::init()
 	//camera->setPosition(glm::vec3(4, 3, 3), glm::vec3(-4, -3, -3));
 
 	gameContext->mouseMovementRegisterer->registerObject("camera", camera);
+	gameContext->keyboardRegisterer->registerObject("camera", camera);
 
 	state = GameStageState::READY;
 }

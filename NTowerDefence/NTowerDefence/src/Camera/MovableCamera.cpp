@@ -2,13 +2,17 @@
 
 #include "MovableCamera.h"
 
-MovableCamera::MovableCamera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfloat pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)
+MovableCamera::MovableCamera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfloat pitch) : 
+	Front(glm::vec3(0.0f, 0.0f, -1.0f)), 
+	MovementSpeed(SPEED), 
+	MouseSensitivity(SENSITIVTY), 
+	Zoom(ZOOM),
+	Position(position),
+	WorldUp(up),
+	Yaw(yaw),
+	Pitch(pitch)
 {
-    this->Position = position;
-    this->WorldUp = up;
-    this->Yaw = yaw;
-    this->Pitch = pitch;
-    this->updateMovableCameraVectors();
+	this->updateMovableCameraVectors();
 }
     // Constructor with scalar values
 MovableCamera::MovableCamera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)
@@ -35,6 +39,7 @@ void MovableCamera::update(float elapsedTime)
 void MovableCamera::ProcessKeyboard(ACTIVE_INPUT direction, float deltaTime)
 {
     GLfloat velocity = this->MovementSpeed * deltaTime;
+
     if (direction == FORWARD)
         this->Position += this->Front * velocity;
     if (direction == BACKWARD)

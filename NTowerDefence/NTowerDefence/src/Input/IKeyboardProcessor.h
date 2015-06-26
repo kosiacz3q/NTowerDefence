@@ -2,14 +2,7 @@
 
 #include <memory>
 
-// Defines several possible options for MovableCamera movement. Used as abstraction to stay away from window-system specific input methods
-enum ACTIVE_INPUT
-{
-	FORWARD,
-	BACKWARD,
-	LEFT,
-	RIGHT
-};
+#include "InputEnum.h"
 
 class IKeyboardPocessor
 {

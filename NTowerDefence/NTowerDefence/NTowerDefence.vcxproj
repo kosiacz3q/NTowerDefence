@@ -99,11 +99,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="src\Input\KeyBindingsHandler.h" />
     <ClInclude Include="src\Base\AssimpUtils.h" />
-    <ClInclude Include="src\Base\IKeyboardProcessor.h" />
+    <ClInclude Include="src\Input\IKeyboardProcessor.h" />
     <ClInclude Include="src\Base\ICamera.h" />
-    <ClInclude Include="src\Base\IMouseMovementProcessor.h" />
-    <ClInclude Include="src\Base\IMouseScrollProcessor.h" />
+    <ClInclude Include="src\Input\IMouseMovementProcessor.h" />
+    <ClInclude Include="src\Input\IMouseScrollProcessor.h" />
     <ClInclude Include="src\Base\Registerer.h" />
     <ClInclude Include="src\Camera\MovableCamera.h" />
     <ClInclude Include="src\Camera\StaticCamera.h" />
@@ -115,6 +116,7 @@
     <ClInclude Include="src\Base\IUpdateable.h" />
     <ClInclude Include="src\GameStages\GameStageMap.h" />
     <ClInclude Include="src\Base\GenericAssetsManager.h" />
+    <ClInclude Include="src\Input\InputEnum.h" />
     <ClInclude Include="src\Models\mesh.h" />
     <ClInclude Include="src\Models\Model.h" />
     <ClInclude Include="src\Models\ModelLoader.h" />
@@ -261,6 +263,7 @@
     <ClInclude Include="src\GameObjects\TriangleObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Input\KeyBindingsHandler.cpp" />
     <ClCompile Include="src\Base\AssimpUtils.cpp" />
     <ClCompile Include="src\Camera\MovableCamera.cpp" />
     <ClCompile Include="src\Camera\StaticCamera.cpp" />

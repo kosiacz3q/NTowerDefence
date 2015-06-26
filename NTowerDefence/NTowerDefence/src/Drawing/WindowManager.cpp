@@ -1,12 +1,16 @@
 #include "WindowManager.h"
 
 #include <stdexcept>
+#include <cstdio>
+
 
 WindowManagerPtr WindowManager::activeWindowManager = nullptr;
+KeyBindingsHandlerPtr WindowManager::keyBindingsHandler = nullptr;
 
-WindowManager::WindowManager()
+WindowManager::WindowManager(KeyBindingsHandlerPtr keyBindingsHandler)
 {
 	activeWindowManager = WindowManagerPtr(this);
+	WindowManager::keyBindingsHandler = keyBindingsHandler;
 }
 
 WindowManager::~WindowManager()
@@ -84,7 +88,14 @@ void WindowManager::setGlStates()
 
 void WindowManager::key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
+	printf("key=%i scancode=%i action=%i mode=%i\n", key, scancode, action, mode);
 
+	auto container = ((Registerer<IKeyboardPocessorPtr>)*activeWindowManager).getContainer();
+
+	for (auto obj : *container)
+	{
+		obj.second->ProcessKeyboard(keyBindingsHandler->getBinding(key) , 1);
+	}
 }
 
 bool firstMouse = true;
