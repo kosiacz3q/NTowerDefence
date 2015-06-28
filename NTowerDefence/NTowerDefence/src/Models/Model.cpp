@@ -31,7 +31,6 @@ void Model::draw(DrawingContextPtr drawingContext)
 	shader->activate();
 
 	shader->setMVP(modelMatrix, drawingContext->view, drawingContext->projection);
-	
 
 	for (GLuint i = 0; i < this->meshes.size(); i++)
 		this->meshes[i].Draw(shader);

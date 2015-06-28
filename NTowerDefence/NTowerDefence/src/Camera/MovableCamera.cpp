@@ -96,3 +96,8 @@ void MovableCamera::updateMovableCameraVectors()
     this->Up    = glm::normalize(glm::cross(this->Right, this->Front));
 }
 
+void MovableCamera::lookOnTarget(const glm::vec3& target)
+{
+	Front = target - Position;
+	Up = glm::vec3(0, 0, 1);
+}

@@ -9,8 +9,8 @@ GameStageMap::GameStageMap(GameContextPtr gameContext)
 {
 	drawingContext = DrawingContextPtr(new DrawingContext());
 
-	//camera = StaticCameraPtr(new StaticCamera());
-	camera = MovableCameraPtr(new MovableCamera(glm::vec3(0.0f, 1.0f, 1.0f)));
+	staticCamera = StaticCameraPtr(new StaticCamera());
+	movableCamera = MovableCameraPtr(new MovableCamera(glm::vec3(-3.0f, -3.0f, 3.0f)));
 
 	state = GameStageState::NOT_INITIALIZED;
 }
@@ -33,15 +33,15 @@ void GameStageMap::init()
 
 	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
 	//drawingContext->projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
-	drawingContext->projection = glm::perspective(camera->Zoom, (float)900 / (float)600, 0.1f, 100.0f);
+	drawingContext->projection = glm::perspective(1.f, (float)900 / (float)600, 0.1f, 100.0f);
 	
 	// Or, for an ortho camera :
 	//glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,0.0f,100.0f); // In world coordinates
 
-	//camera->setPosition(glm::vec3(4, 3, 3), glm::vec3(-4, -3, -3));
+	
 
-	gameContext->mouseMovementRegisterer->registerObject("camera", camera);
-	gameContext->keyboardRegisterer->registerObject("camera", camera);
+	gameContext->mouseMovementRegisterer->registerObject("camera", movableCamera);
+	gameContext->keyboardRegisterer->registerObject("camera", movableCamera);
 
 	state = GameStageState::READY;
 }
@@ -56,9 +56,13 @@ void GameStageMap::onBegin()
 	//model->init();
 	modelHouse->init();
 	
+	modelHouse->scale(glm::vec3(0.01, 0.01, 0.01));
+	modelHouse->translateTo(glm::vec3(0.0f, 0.f, 0.0f));
 	
-	modelHouse->translateTo(glm::vec3(0.0f, 2.f, 0.0f));
-	modelHouse->scale(glm::vec3(0.2, 0.2, 0.2));
+	//camera->lookOnTarget(glm::vec3(0, 0, 0));
+
+	staticCamera->setPosition(glm::vec3(14, 0, 10), glm::vec3(-14, 0, -10));
+	staticCamera->setUpVector(glm::vec3(0, 0, 1));
 
 	state = GameStageState::ACTIVE;
 }
@@ -80,7 +84,7 @@ void  GameStageMap::draw()
 	//texturedCube->draw(drawingContext);
 
 	//model->draw(drawingContext);
-	drawingContext->view = camera->getViewMatrix();
+	//drawingContext->view = staticCamera->getViewMatrix();
 
 	modelHouse->draw(drawingContext);
 
@@ -89,5 +93,5 @@ void  GameStageMap::draw()
 
 void GameStageMap::update(UpdateContextPtr context)
 {
-	drawingContext->view = camera->getViewMatrix();
+	drawingContext->view = staticCamera->getViewMatrix();
 }

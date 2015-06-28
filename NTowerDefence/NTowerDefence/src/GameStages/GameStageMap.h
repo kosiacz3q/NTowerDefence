@@ -10,6 +10,7 @@
 
 //#include <Camera\StaticCamera.h>
 #include <Camera\MovableCamera.h>
+#include <Camera\StaticCamera.h>
 
 #include <Models\Model.h>
 
@@ -47,8 +48,8 @@ private:
 	DrawingContextPtr drawingContext;
 	UpdateContextPtr updateContext;
 
-	//StaticCameraPtr camera;
-	MovableCameraPtr camera;
+	StaticCameraPtr staticCamera;
+	MovableCameraPtr movableCamera;
 
 	typedef std::set<IDrawablePtr> DrawableContainer;
 	DrawableContainer drawableContainer;

@@ -59,6 +59,8 @@ public:
 
 	void update(float elapsedTime);
 
+	void lookOnTarget(const glm::vec3& target);
+
 private:
 	void updateMovableCameraVectors();
 };

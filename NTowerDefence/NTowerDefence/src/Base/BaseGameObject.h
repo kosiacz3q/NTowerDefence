@@ -24,15 +24,20 @@ public:
 
 	void translateTo(const glm::vec3& destination)
 	{
-		modelMatrix = glm::translate(destination);
+		modelMatrix = glm::scale(glm::mat4(1), modelScale);
+		modelMatrix = glm::translate(modelMatrix,destination);
 	}
 
 	void scale(const glm::vec3& scaleVector)
 	{
-		modelMatrix = glm::scale(modelMatrix, scaleVector);
+		modelScale = scaleVector;
+
+		modelMatrix = glm::scale(modelMatrix, modelScale);
 	}
 
 protected:
+
+	glm::vec3 modelScale;
 
 	glm::mat4 modelMatrix;
 };

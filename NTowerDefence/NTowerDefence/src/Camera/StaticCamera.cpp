@@ -14,6 +14,9 @@ StaticCamera::~StaticCamera()
 
 void StaticCamera::setPosition(glm::vec3 cameraPos, glm::vec3 direction)
 {
+	this->cameraPos = cameraPos;
+	this->direction = direction;
+
 	float horizontalAngle = 3.14f;
 
 	// Right vector
@@ -23,16 +26,24 @@ void StaticCamera::setPosition(glm::vec3 cameraPos, glm::vec3 direction)
 		cos(horizontalAngle - 3.14f / 2.0f)
 		);
 
-	glm::vec3 up = glm::cross(right, direction);
+	up = glm::cross(right, direction);
+}
 
-	viewMatrix = glm::lookAt(
+void StaticCamera::update(float elapsedTime)
+{
+	//nothing to do
+}
+
+glm::mat4x4 StaticCamera::getViewMatrix()
+{
+	return glm::lookAt(
 		cameraPos,           // Camera is here
 		cameraPos + direction, // and looks here : at the same position, plus "direction"
 		up                  // Head is up (set to 0,-1,0 to look upside-down)
 		);
 }
 
-void StaticCamera::update(float elapsedTime)
+void StaticCamera::setUpVector(const glm::vec3& up)
 {
-	//nothing to do
+	this->up = up;
 }

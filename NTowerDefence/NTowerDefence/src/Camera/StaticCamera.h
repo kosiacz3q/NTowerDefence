@@ -13,15 +13,16 @@ public:
 	
 	void update(float elapsedTime);
 
-	glm::mat4x4 getViewMatrix()
-	{
-		return viewMatrix;
-	}
+	glm::mat4x4 getViewMatrix();
+
+	void setUpVector(const glm::vec3& up);
 
 	void setPosition(glm::vec3 cameraPos, glm::vec3 target);
 
 private:
-	glm::mat4 viewMatrix;
+	glm::vec3 up;
+	glm::vec3 cameraPos;
+	glm::vec3 direction;
 };
 
 typedef std::shared_ptr<StaticCamera> StaticCameraPtr;
