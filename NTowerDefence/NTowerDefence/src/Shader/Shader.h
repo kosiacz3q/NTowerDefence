@@ -1,18 +1,21 @@
 #pragma once
 
 #include <memory>
-#include <Base\GenericAssetsManager.h>
+
+#include <Base/AssetsManager/GenericSharedAssetsManager.h>
+#include <Base\IShader.h>
 
 #include <GL/glew.h>
 
 #include <glm\glm.hpp>
 
 class Shader
+	: public IShader
 {
 public:
 	Shader(GLuint programId);
 
-	inline GLuint getId()
+	inline int getId()
 	{
 		return programId;
 	}
@@ -29,7 +32,3 @@ public:
 private:
 	GLuint programId;
 };
-
-typedef std::shared_ptr<Shader> ShaderPtr;
-typedef GenericAssetsManager<ShaderPtr> ShaderManager;
-typedef std::shared_ptr<ShaderManager> ShaderManagerPtr;

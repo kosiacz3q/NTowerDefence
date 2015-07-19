@@ -2,15 +2,16 @@
 
 #include <GL\glew.h>
 
-#include "..\Shader\Shader.h"
 
-#include "Base\BaseGameObject.h"
+#include <Base\BaseGameObject.h>
+#include <Base\IShader.h>
+
 
 class TriangleObject :
 	public BaseGameObject
 {
 public:
-	TriangleObject(ShaderPtr shader);
+	TriangleObject(IShaderPtr shader);
 	virtual ~TriangleObject();
 
 	void draw(DrawingContextPtr drawingContext);
@@ -22,6 +23,6 @@ private:
 	GLuint vertexBufferId;
 	GLfloat* vertexBufferData;
 	GLuint matrixID;
-	ShaderPtr shader;
+	IShaderPtr shader;
 };
 

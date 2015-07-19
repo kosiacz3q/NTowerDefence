@@ -11,6 +11,6 @@ public:
 	ShaderLoader();
 	virtual ~ShaderLoader();
 
-	ShaderPtr LoadShaderFromFile(const std::string& vertexFilePath, const std::string& fragmentFilePath);
+	IShaderPtr LoadShaderFromFile(const std::string& vertexFilePath, const std::string& fragmentFilePath);
 };
 

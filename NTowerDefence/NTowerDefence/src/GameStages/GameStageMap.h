@@ -12,7 +12,7 @@
 #include <Camera\MovableCamera.h>
 #include <Camera\StaticCamera.h>
 
-#include <Models\Model.h>
+#include <Models\ModelContainer.h>
 
 class GameStageMap : public BaseGameStage
 {
@@ -61,7 +61,6 @@ private:
 	const std::string id = "GAME_STAGE_MAP";
 
 	BaseGameObjectPtr model;
-	BaseGameObjectPtr modelHouse;
 
 	GameStageState state;
 };

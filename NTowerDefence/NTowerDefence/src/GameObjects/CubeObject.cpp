@@ -1,7 +1,7 @@
 #include "CubeObject.h"
 
 
-CubeObject::CubeObject(ShaderPtr shader)
+CubeObject::CubeObject(IShaderPtr shader)
 	:shader(shader)
 {
 

@@ -13,7 +13,7 @@ using namespace std;
 
 #include <assimp\types.h>
 
-#include <Shader\Shader.h>
+#include <Base\IShader.h>
 
 struct Vertex {
     // Position
@@ -44,7 +44,7 @@ public:
 	Mesh(vector<Vertex> vertices, vector<GLuint> indices, vector<ModelTexture> textures);
 
     // Render the mesh
-	void Draw(ShaderPtr shader);
+	void Draw(IShaderPtr shader);
 
 private:
     GLuint VBO, EBO;

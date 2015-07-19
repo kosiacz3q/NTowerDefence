@@ -1,6 +1,6 @@
 #include "TriangleObject.h"
 
-TriangleObject::TriangleObject(ShaderPtr shader)
+TriangleObject::TriangleObject(IShaderPtr shader)
 	:shader(shader)
 {
 

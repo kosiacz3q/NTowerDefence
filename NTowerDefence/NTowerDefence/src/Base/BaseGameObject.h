@@ -3,6 +3,8 @@
 #include "IDrawable.h"
 #include "IUpdateable.h"
 
+#include <Base/AssetsManager/GenericSharedAssetsManager.h>
+
 class BaseGameObject : 
 	public IDrawable, 
 	public IUpdateable
@@ -42,4 +44,7 @@ protected:
 	glm::mat4 modelMatrix;
 };
 
-typedef std::shared_ptr<BaseGameObject> BaseGameObjectPtr;
+typedef std::shared_ptr <BaseGameObject> BaseGameObjectPtr;
+//typedef GenericUniqueAssetsManager<BaseGameObjectPtr> BaseGameObjectsManager;
+typedef GenericSharedAssetsManager<BaseGameObjectPtr> BaseGameObjectsManager;
+typedef std::shared_ptr< BaseGameObjectsManager> BaseGameObjectsManagerPtr;

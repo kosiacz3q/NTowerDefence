@@ -1,7 +1,7 @@
 #include "TexturedCube.h"
 
 
-TexturedCube::TexturedCube(ShaderPtr shader, TexturePtr texture)
+TexturedCube::TexturedCube(IShaderPtr shader, TexturePtr texture)
 	:shader(shader), texture(texture)
 {
 

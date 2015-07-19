@@ -2,17 +2,18 @@
 
 #include <memory>
 
+#include <Base\BaseGameObject.h>
+
 #include <Shader\Shader.h>
 #include <GameStages\GameStageManager.h>
 #include <Drawing\WindowManager.h>
 #include <Textures\Texture.h>
-#include <Models\Model.h>
+#include <Models\ModelContainer.h>
 #include <Input\KeyBindingsHandler.h>
 
 #include <Input\IKeyboardProcessor.h>
 #include <Input\IMouseMovementProcessor.h>
 #include <Input\IMouseScrollProcessor.h>
-
 
 #include <Base\Registerer.h>
 
@@ -25,8 +26,10 @@ public:
 
 	TextureManagerPtr textureManager;
 	ShaderManagerPtr shaderManager;
-	ModelManagerPtr modelManager;
+	ModelContainersManagerPtr modelManager;
 	KeyBindingsHandlerPtr keyBindingsHandler;
+
+	BaseGameObjectsManagerPtr gameObjectsManager;
 
 	std::shared_ptr<Registerer<IKeyboardPocessorPtr> > keyboardRegisterer;
 	std::shared_ptr<Registerer<IMouseMovementProcessorPtr> > mouseMovementRegisterer;

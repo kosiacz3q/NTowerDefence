@@ -29,7 +29,7 @@ void GameStageMap::init()
 
 	//model = gameContext->modelManager->getAsset("transparentModel");
 
-	modelHouse = gameContext->modelManager->getAsset("houseModel");
+	model = gameContext->gameObjectsManager->getAsset("fuckingAwesomeTree");
 
 	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
 	//drawingContext->projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
@@ -54,14 +54,14 @@ void GameStageMap::onBegin()
 	//cube->init();
 	//texturedCube->init();
 	//model->init();
-	modelHouse->init();
+	model->init();
 	
-	modelHouse->scale(glm::vec3(0.01, 0.01, 0.01));
-	modelHouse->translateTo(glm::vec3(0.0f, 0.f, 0.0f));
+	model->scale(glm::vec3(0.01, 0.01, 0.01));
+	model->translateTo(glm::vec3(0.0f, 0.f, 0.0f));
 	
 	//camera->lookOnTarget(glm::vec3(0, 0, 0));
 
-	staticCamera->setPosition(glm::vec3(14, 0, 10), glm::vec3(-14, 0, -10));
+	staticCamera->setPosition(glm::vec3(14, 0, 10), glm::vec3(-14, 0, -9.95f));
 	staticCamera->setUpVector(glm::vec3(0, 0, 1));
 
 	state = GameStageState::ACTIVE;
@@ -86,7 +86,7 @@ void  GameStageMap::draw()
 	//model->draw(drawingContext);
 	//drawingContext->view = staticCamera->getViewMatrix();
 
-	modelHouse->draw(drawingContext);
+	model->draw(drawingContext);
 
 	glfwSwapBuffers(window);
 }

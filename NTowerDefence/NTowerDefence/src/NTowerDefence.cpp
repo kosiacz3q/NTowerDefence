@@ -4,9 +4,11 @@
 #include <Shader\ShaderLoader.h>
 #include <Textures\TexturesLoader.h>
 #include <Models\ModelLoader.h>
+#include <GameObjects\ModelObject.h>
 
 #include <GameManager\GameManager.h>
 #include <GameStages\GameStageMap.h>
+
 
 
 int main(void)
@@ -91,22 +93,33 @@ int main(void)
 		);*/
 
 	gameContext->modelManager->InsertAsset(
-		"houseModel",
+		"testModel",
 		modelLoader.LoadModel(
 			//"models/nanosuit/nanosuit.obj",
 			//"models/house/house.obj",
 			//"models/trees/palmTree/Palm_Tree.obj",
 			//"models/trees/Tree1/Tree.obj",
 			//"models/trees/datePalm/DatePalm.obj",
-			"models/trees/datePalm/DatePalm.3ds",
+			"models/trees/datePalm/DatePalm.3ds"
 			//"models/house/house.3ds",
-			gameContext->shaderManager->getAsset("workingModelShader"))
+			)
 	);
+
+	gameContext->gameObjectsManager->InsertAsset(
+		"fuckingAwesomeTree",
+		BaseGameObjectPtr(
+		new ModelObject(
+			gameContext->modelManager->getAsset("testModel"),
+			gameContext->shaderManager->getAsset("workingModelShader")
+			))
+		);
 
 	gameContext->gameStageManager->registerStage(BaseGameStagePtr(new GameStageMap(gameContext)));
 	gameContext->gameStageManager->requestStageSet("GAME_STAGE_MAP");
 
 	gameManager->run();
+
+
 
 	return 0;
 }

@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <thread>
 
+
 GameManager::GameManager()
 {
 	gameContext = GameContextPtr(new GameContext());
@@ -18,7 +19,9 @@ GameManager::GameManager()
 	gameContext->mouseScrollRegisterer = gameContext->windowHandler;
 
 	gameContext->textureManager = TextureManagerPtr(new TextureManager());
-	gameContext->modelManager = ModelManagerPtr(new ModelManager());
+	gameContext->modelManager = ModelContainersManagerPtr(new ModelContainersManager());
+
+	gameContext->gameObjectsManager = BaseGameObjectsManagerPtr(new BaseGameObjectsManager());
 }
 
 GameManager::~GameManager()

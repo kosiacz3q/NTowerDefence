@@ -16,7 +16,7 @@ ModelLoader::~ModelLoader()
 
 }
 
-ModelPtr ModelLoader::LoadModel(const std::string& path, const ShaderPtr shader)
+ModelContainerPtr ModelLoader::LoadModel(const std::string& path)
 {
 	Assimp::Importer importer;
 
@@ -30,7 +30,7 @@ ModelPtr ModelLoader::LoadModel(const std::string& path, const ShaderPtr shader)
 		throw std::logic_error(importer.GetErrorString());
 	}
 
-	auto model = ModelPtr(new Model(scene, shader, path.substr(0, path.find_last_of('/'))));
+	auto model = ModelContainerPtr(new ModelContainer(scene, path.substr(0, path.find_last_of('/'))));
 
 	return model;
 }

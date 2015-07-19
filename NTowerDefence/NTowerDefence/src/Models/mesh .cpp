@@ -25,7 +25,7 @@ Mesh::Mesh(vector<Vertex> vertices, vector<GLuint> indices, vector<ModelTexture 
 }
 
     // Render the mesh
-void Mesh::Draw(ShaderPtr shader) 
+void Mesh::Draw(IShaderPtr shader) 
 {
     // Bind appropriate textures
     GLuint diffuseNr = 1;

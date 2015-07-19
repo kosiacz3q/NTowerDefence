@@ -2,14 +2,14 @@
 
 #include "Base\BaseGameObject.h"
 
-#include "..\Shader\Shader.h"
-#include "..\Textures\Texture.h"
+#include <Base\IShader.h>
+#include <Textures\Texture.h>
 
 class TexturedCube :
 	public BaseGameObject
 {
 public:
-	TexturedCube(ShaderPtr shader, TexturePtr texture);
+	TexturedCube(IShaderPtr shader, TexturePtr texture);
 	virtual ~TexturedCube();
 
 	void draw(DrawingContextPtr drawingContext);
@@ -27,7 +27,7 @@ private:
 	GLuint textureSamplerId;
 	GLuint uvBufferId;
 
-	ShaderPtr shader;
+	IShaderPtr shader;
 	TexturePtr texture;
 };
 

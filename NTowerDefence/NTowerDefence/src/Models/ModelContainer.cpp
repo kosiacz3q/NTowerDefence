@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Model.h"
+#include "ModelContainer.h"
 
 #include <string>
 #include <fstream>
@@ -20,34 +20,20 @@ using namespace std;
 
 GLint TextureFromFile(const char* path, string directory, bool gamma = false);
 
-Model::Model(const aiScene* scene, ShaderPtr shader, std::string texturesPath)
-	:shader(shader), directory(texturesPath)
+ModelContainer::ModelContainer(const aiScene* scene, std::string texturesPath)
+	: directory(texturesPath)
 {
 	this->processNode(scene->mRootNode, scene);
 }
 
-void Model::draw(DrawingContextPtr drawingContext)
+void ModelContainer::draw(IShaderPtr shader)
 {
-	shader->activate();
-
-	shader->setMVP(modelMatrix, drawingContext->view, drawingContext->projection);
-
 	for (GLuint i = 0; i < this->meshes.size(); i++)
 		this->meshes[i].Draw(shader);
 }
 
-void Model::update(UpdateContextPtr updateContext)
-{
-
-}
-
-void Model::init()
-{
-
-}
-
 // Processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process on its children nodes (if any).
-void Model::processNode(aiNode* node, const aiScene* scene)
+void ModelContainer::processNode(aiNode* node, const aiScene* scene)
 {
 	// Process each mesh located at the current node
 	for(GLuint i = 0; i < node->mNumMeshes; i++)
@@ -65,7 +51,7 @@ void Model::processNode(aiNode* node, const aiScene* scene)
 
 }
 
-Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
+Mesh ModelContainer::processMesh(aiMesh* mesh, const aiScene* scene)
 {
 	// Data to fill
 	vector<Vertex> vertices;
@@ -154,7 +140,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
 
 	// Checks all material textures of a given type and loads the textures if they're not loaded yet.
 	// The required info is returned as a Texture struct.
-vector<ModelTexture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName)
+vector<ModelTexture> ModelContainer::loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName)
 {
 	vector<ModelTexture> textures;
 

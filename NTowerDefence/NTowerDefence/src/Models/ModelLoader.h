@@ -2,7 +2,7 @@
 
 #include <assimp\Importer.hpp>
 
-#include "Model.h"
+#include "ModelContainer.h"
 
 class ModelLoader
 {
@@ -10,7 +10,7 @@ public:
 	ModelLoader();
 	virtual ~ModelLoader();
 
-	ModelPtr LoadModel(const std::string& path, const ShaderPtr shader);
+	ModelContainerPtr LoadModel(const std::string& path);
 
 private:
 

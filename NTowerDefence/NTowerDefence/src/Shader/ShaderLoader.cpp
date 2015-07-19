@@ -23,7 +23,7 @@ ShaderLoader::~ShaderLoader()
 }
 
 
-ShaderPtr ShaderLoader::LoadShaderFromFile(const std::string& vertexFilePath, const std::string& fragmentFilePath)
+IShaderPtr ShaderLoader::LoadShaderFromFile(const std::string& vertexFilePath, const std::string& fragmentFilePath)
 {
 	const char * vertex_file_path = vertexFilePath.c_str();
 	const char * fragment_file_path = fragmentFilePath.c_str();
@@ -99,5 +99,5 @@ ShaderPtr ShaderLoader::LoadShaderFromFile(const std::string& vertexFilePath, co
 	glDeleteShader(VertexShaderID);
 	glDeleteShader(FragmentShaderID);
 
-	return ShaderPtr(new Shader(ProgramID));
+	return IShaderPtr(new Shader(ProgramID));
 }

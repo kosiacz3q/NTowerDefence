@@ -12,13 +12,12 @@ using namespace std;
 
 #include <assimp/scene.h>
 
-#include <Base/GenericAssetsManager.h>
-#include <Base/BaseGameObject.h>
-#include <Shader\Shader.h>
+#include <Base/AssetsManager/GenericSharedAssetsManager.h>
+#include <Base\IShader.h>
 
-#include <Models\mesh.h>
+#include "mesh.h"
 
-class Model : public BaseGameObject
+class ModelContainer
 {
 public:
     /*  Model Data */
@@ -27,18 +26,13 @@ public:
     
     bool gammaCorrection;
 
+	void draw(IShaderPtr shader);
+
     /*  Functions   */
     // Constructor, expects a filepath to a 3D model.
-	Model(const aiScene* scene, ShaderPtr shader, std::string texturesPath);
-
-	void draw(DrawingContextPtr drawingContext);
-
-	void update(UpdateContextPtr updateContext);
-
-	void init();
+	ModelContainer(const aiScene* scene, std::string texturesPath);
     
 private:
-	ShaderPtr shader;
 	string directory;
 
     /*  Functions   */
@@ -55,6 +49,6 @@ private:
 	vector<ModelTexture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName);
 };
 
-typedef std::shared_ptr<Model> ModelPtr;
-typedef GenericAssetsManager<ModelPtr> ModelManager;
-typedef std::shared_ptr<ModelManager> ModelManagerPtr;
+typedef std::shared_ptr<ModelContainer> ModelContainerPtr;
+typedef GenericSharedAssetsManager<ModelContainerPtr> ModelContainersManager;
+typedef std::shared_ptr<ModelContainersManager> ModelContainersManagerPtr;
