@@ -33,3 +33,8 @@ void ModelObject::init()
 {
 
 }
+
+ModelObject* ModelObject::getCopy()
+{
+	return new ModelObject(*this);
+}

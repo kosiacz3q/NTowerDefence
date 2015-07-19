@@ -60,7 +60,8 @@ private:
 
 	const std::string id = "GAME_STAGE_MAP";
 
-	BaseGameObjectPtr model;
+	BaseGameObjectPtr model1;
+	BaseGameObjectPtr model2;
 
 	GameStageState state;
 };

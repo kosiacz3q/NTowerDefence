@@ -519,6 +519,9 @@
     <ClInclude Include="src\Base\AssetsManager\GenericUniqueAssetsManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Base\ICopyable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\NTowerDefence.cpp">

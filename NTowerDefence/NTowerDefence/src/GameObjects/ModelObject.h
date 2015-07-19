@@ -18,6 +18,8 @@ public:
 
 	void init();
 
+	ModelObject* getCopy();
+
 private:
 	IShaderPtr shader;
 

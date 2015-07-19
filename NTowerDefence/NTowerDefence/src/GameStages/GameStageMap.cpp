@@ -29,7 +29,8 @@ void GameStageMap::init()
 
 	//model = gameContext->modelManager->getAsset("transparentModel");
 
-	model = gameContext->gameObjectsManager->getAsset("fuckingAwesomeTree");
+	model1 = gameContext->gameObjectsManager->getAsset("fuckingAwesomeTree");
+	model2 = gameContext->gameObjectsManager->getAsset("fuckingAwesomeTree");
 
 	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
 	//drawingContext->projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
@@ -54,10 +55,15 @@ void GameStageMap::onBegin()
 	//cube->init();
 	//texturedCube->init();
 	//model->init();
-	model->init();
+
+	model1->init();
+	model2->init();
 	
-	model->scale(glm::vec3(0.01, 0.01, 0.01));
-	model->translateTo(glm::vec3(0.0f, 0.f, 0.0f));
+	model1->scale(glm::vec3(0.01, 0.01, 0.01));
+	model1->translateTo(glm::vec3(0.0f, -14.f, 0.0f));
+
+	model2->scale(glm::vec3(0.01, 0.01, 0.01));
+	model2->translateTo(glm::vec3(0.0f, 14.f, 0.0f));
 	
 	//camera->lookOnTarget(glm::vec3(0, 0, 0));
 
@@ -86,7 +92,8 @@ void  GameStageMap::draw()
 	//model->draw(drawingContext);
 	//drawingContext->view = staticCamera->getViewMatrix();
 
-	model->draw(drawingContext);
+	model1->draw(drawingContext);
+	model2->draw(drawingContext);
 
 	glfwSwapBuffers(window);
 }

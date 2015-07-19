@@ -2,12 +2,15 @@
 
 #include "IDrawable.h"
 #include "IUpdateable.h"
+#include "ICopyable.h"
 
-#include <Base/AssetsManager/GenericSharedAssetsManager.h>
+//#include <Base/AssetsManager/GenericSharedAssetsManager.h>
+#include <Base\AssetsManager\GenericUniqueAssetsManager.h>
 
 class BaseGameObject : 
 	public IDrawable, 
-	public IUpdateable
+	public IUpdateable,
+	public ICopyable<BaseGameObject>
 {
 public:
 	BaseGameObject();
@@ -45,6 +48,5 @@ protected:
 };
 
 typedef std::shared_ptr <BaseGameObject> BaseGameObjectPtr;
-//typedef GenericUniqueAssetsManager<BaseGameObjectPtr> BaseGameObjectsManager;
-typedef GenericSharedAssetsManager<BaseGameObjectPtr> BaseGameObjectsManager;
+typedef GenericUniqueAssetsManager<BaseGameObjectPtr> BaseGameObjectsManager;
 typedef std::shared_ptr< BaseGameObjectsManager> BaseGameObjectsManagerPtr;
