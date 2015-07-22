@@ -39,7 +39,8 @@ void GameStageMap::init()
 	// Or, for an ortho camera :
 	//glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,0.0f,100.0f); // In world coordinates
 
-	
+	model1->init();
+	model2->init();
 
 	gameContext->mouseMovementRegisterer->registerObject("camera", movableCamera);
 	gameContext->keyboardRegisterer->registerObject("camera", movableCamera);
@@ -56,8 +57,7 @@ void GameStageMap::onBegin()
 	//texturedCube->init();
 	//model->init();
 
-	model1->init();
-	model2->init();
+
 	
 	model1->scale(glm::vec3(0.01, 0.01, 0.01));
 	model1->translateTo(glm::vec3(0.0f, -14.f, 0.0f));

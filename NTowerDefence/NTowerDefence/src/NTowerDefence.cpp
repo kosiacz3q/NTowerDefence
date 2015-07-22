@@ -114,7 +114,7 @@ int main(void)
 			))
 		);
 
-	gameContext->gameStageManager->registerStage(BaseGameStagePtr(new GameStageMap(gameContext)));
+	gameContext->gameStageManager->registerStage(make_shared<BaseGameStage>(gameContext));
 	gameContext->gameStageManager->requestStageSet("GAME_STAGE_MAP");
 
 	gameManager->run();
