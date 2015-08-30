@@ -45,7 +45,7 @@ void WindowManager::initGLFW()
 	if (window == NULL)
 	{
 		glfwTerminate();
-		throw std::logic_error("Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible.\n");
+		throw std::logic_error("Failed to open GLFW window. If you have an Intel GPU, they are not compatible.\n");
 	}
 	else
 	{
