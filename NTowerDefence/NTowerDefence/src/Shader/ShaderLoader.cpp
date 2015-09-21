@@ -42,16 +42,6 @@ IShaderPtr ShaderLoader::LoadShaderFromFile(const std::string& vertexFilePath, c
 		VertexShaderStream.close();
 	}
 
-	// Read the Fragment Shader code from the file
-	std::string FragmentShaderCode;
-	std::ifstream FragmentShaderStream(fragment_file_path, std::ios::in);
-	if (FragmentShaderStream.is_open())
-	{
-		std::string Line = "";
-		while (getline(FragmentShaderStream, Line))
-			FragmentShaderCode += "\n" + Line;
-		FragmentShaderStream.close();
-	}
 
 	GLint Result = GL_FALSE;
 	int InfoLogLength;
@@ -69,6 +59,19 @@ IShaderPtr ShaderLoader::LoadShaderFromFile(const std::string& vertexFilePath, c
 	char VertexShaderErrorMessage[250] = { 0 };
 	glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, VertexShaderErrorMessage);
 	fprintf(stdout, "%s\n", &VertexShaderErrorMessage[0]);
+
+
+	// Read the Fragment Shader code from the file
+	std::string FragmentShaderCode;
+	std::ifstream FragmentShaderStream(fragment_file_path, std::ios::in);
+	if (FragmentShaderStream.is_open())
+	{
+		std::string Line = "";
+		while (getline(FragmentShaderStream, Line))
+			FragmentShaderCode += "\n" + Line;
+		FragmentShaderStream.close();
+	}
+
 
 	// Compile Fragment Shader
 	printf("Compiling shader : %s\n", fragment_file_path);
