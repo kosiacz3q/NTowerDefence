@@ -15,7 +15,8 @@ MovableCamera::MovableCamera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfl
 	this->updateMovableCameraVectors();
 }
     // Constructor with scalar values
-MovableCamera::MovableCamera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)
+MovableCamera::MovableCamera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch) 
+	: Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)
 {
     this->Position = glm::vec3(posX, posY, posZ);
     this->WorldUp = glm::vec3(upX, upY, upZ);
@@ -27,7 +28,10 @@ MovableCamera::MovableCamera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat u
     // Returns the view matrix calculated using Eular Angles and the LookAt Matrix
 glm::mat4x4 MovableCamera::getViewMatrix()
 {
-    return glm::lookAt(this->Position, this->Position + this->Front, this->Up);
+    return glm::lookAt(
+		this->Position, 
+		this->Position + this->Front, 
+		this->Up);
 }
 
 void MovableCamera::update(float elapsedTime)
@@ -100,4 +104,12 @@ void MovableCamera::lookOnTarget(const glm::vec3& target)
 {
 	Front = target - Position;
 	Up = glm::vec3(0, 0, 1);
+}
+
+
+void MovableCamera::setPosition(glm::vec3 cameraPos, glm::vec3 direction, const glm::vec3& up)
+{
+	this->Position = cameraPos;
+	this->Front = direction;
+	Up = up;
 }

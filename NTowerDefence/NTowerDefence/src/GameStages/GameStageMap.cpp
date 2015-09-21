@@ -7,10 +7,10 @@
 GameStageMap::GameStageMap(GameContextPtr gameContext)
 	:gameContext(gameContext)
 {
-	drawingContext = DrawingContextPtr(new DrawingContext());
+	drawingContext = std::make_shared<DrawingContext>();
 
-	staticCamera = StaticCameraPtr(new StaticCamera());
-	movableCamera = MovableCameraPtr(new MovableCamera(glm::vec3(-3.0f, -3.0f, 3.0f)));
+	staticCamera = std::make_shared<StaticCamera>();
+	movableCamera = std::make_shared<MovableCamera>(glm::vec3(-3.0f, -3.0f, 3.0f));
 
 	state = GameStageState::NOT_INITIALIZED;
 }
@@ -42,7 +42,7 @@ void GameStageMap::init()
 	model1->init();
 	model2->init();
 
-	gameContext->mouseMovementRegisterer->registerObject("camera", movableCamera);
+	//gameContext->mouseMovementRegisterer->registerObject("camera", movableCamera);
 	gameContext->keyboardRegisterer->registerObject("camera", movableCamera);
 
 	state = GameStageState::READY;
@@ -56,8 +56,6 @@ void GameStageMap::onBegin()
 	//cube->init();
 	//texturedCube->init();
 	//model->init();
-
-
 	
 	model1->scale(glm::vec3(0.01, 0.01, 0.01));
 	model1->translateTo(glm::vec3(0.0f, -14.f, 0.0f));
@@ -67,8 +65,10 @@ void GameStageMap::onBegin()
 	
 	//camera->lookOnTarget(glm::vec3(0, 0, 0));
 
-	staticCamera->setPosition(glm::vec3(14, 0, 10), glm::vec3(-14, 0, -9.95f));
-	staticCamera->setUpVector(glm::vec3(0, 0, 1));
+	//staticCamera->setPosition(glm::vec3(14, 0, 10), glm::vec3(-14, 0, -9.95f));
+	//staticCamera->setUpVector(glm::vec3(0, 0, 1));
+
+	movableCamera->setPosition(glm::vec3(14, 0, 10), glm::vec3(-14, 0, -9.95f), glm::vec3(0, 0, 1));
 
 	state = GameStageState::ACTIVE;
 }
@@ -100,5 +100,5 @@ void  GameStageMap::draw()
 
 void GameStageMap::update(UpdateContextPtr context)
 {
-	drawingContext->view = staticCamera->getViewMatrix();
+	drawingContext->view = movableCamera->getViewMatrix();
 }
