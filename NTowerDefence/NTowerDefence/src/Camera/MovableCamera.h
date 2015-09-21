@@ -16,8 +16,8 @@
 // Default MovableCamera values
 const GLfloat YAW = -90.0f;
 const GLfloat PITCH = 0.0f;
-const GLfloat SPEED = 3.0f;
-const GLfloat SENSITIVTY = 0.25f;
+const GLfloat SPEED = 0.2f;
+const GLfloat SENSITIVTY = 0.05f;
 const GLfloat ZOOM = 45.0f;
 
 // An abstract MovableCamera class that processes input and calculates the corresponding Eular Angles, Vectors and Matrices for use in OpenGL
@@ -60,6 +60,8 @@ public:
 	void update(float elapsedTime);
 
 	void lookOnTarget(const glm::vec3& target);
+
+	void setPosition(glm::vec3 cameraPos, glm::vec3 target, const glm::vec3& up);
 
 private:
 	void updateMovableCameraVectors();
