@@ -61,7 +61,7 @@ public:
 
 	void lookOnTarget(const glm::vec3& target);
 
-	void setPosition(glm::vec3 cameraPos, glm::vec3 target, const glm::vec3& up);
+	void setPosition(glm::vec3 cameraPos, const glm::vec3& target, const glm::vec3& up);
 
 private:
 	void updateMovableCameraVectors();

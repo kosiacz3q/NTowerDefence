@@ -101,8 +101,9 @@ int main(void)
 			//"models/trees/Tree1/Tree.obj",
 			//"models/trees/datePalm/DatePalm.obj",
 			//"models/trees/datePalm/DatePalm.3ds"
+			"models/soccerball/soccer ball.3ds"
 			//"models/house/house.3ds"
-			"models/rnb0vrhfgoao-tennisball/tennisball.obj"
+			//"models/rnb0vrhfgoao-tennisball/tennisball.obj"
 			)
 	);
 
