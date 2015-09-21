@@ -103,6 +103,7 @@ int main(void)
 			"models/trees/datePalm/DatePalm.3ds"
 			//"models/house/house.3ds"
 			//"models/rnb0vrhfgoao-tennisball/tennisball.obj"
+			//"models/soccerball/soccer ball.3ds"
 			)
 		);
 
@@ -120,10 +121,10 @@ int main(void)
 	auto model1 = gameContext->gameObjectsManager->getAsset("fuckingAwesomeTree");
 	auto model2 = gameContext->gameObjectsManager->getAsset("fuckingAwesomeTree");
 	
-	model1->scale(glm::vec3(0.01, 0.01, 0.01));
+	model1->scale(glm::vec3(0.001, 0.001, 0.001));
 	model1->translateTo(glm::vec3(0.0f, -14.f, 0.0f));
 
-	model2->scale(glm::vec3(0.01, 0.01, 0.01));
+	model2->scale(glm::vec3(0.001, 0.001, 0.001));
 	model2->translateTo(glm::vec3(0.0f, 14.f, 0.0f));
 
 	gameStageMap->registerObject("model1", model1);

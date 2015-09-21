@@ -89,7 +89,6 @@ void MovableCamera::ProcessMouseScroll(GLfloat yoffset)
 
 void MovableCamera::ProcessMouseClick(int button, int action, int mods)
 {
-
 }
 
 void MovableCamera::updateMovableCameraVectors()

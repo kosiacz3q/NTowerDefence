@@ -64,6 +64,7 @@ void WindowManager::initGLFW()
 		glfwSetKeyCallback(window, WindowManager::key_callback);
 		glfwSetCursorPosCallback(window, WindowManager::mouse_callback);
 		glfwSetScrollCallback(window, WindowManager::scroll_callback);
+		glfwSetMouseButtonCallback(window, WindowManager::mouse_click_callback);
 	}
 }
 
@@ -138,8 +139,7 @@ void WindowManager::mouse_click_callback(GLFWwindow * window, int button, int ac
 	for (auto obj : *container)
 	{
 		obj.second->ProcessMouseClick(button, action, mods);
-	}	
-	printf("Click");
+	}		
 }
 
 void WindowManager::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
