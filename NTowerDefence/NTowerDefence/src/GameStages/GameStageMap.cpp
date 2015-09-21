@@ -63,18 +63,6 @@ void GameStageMap::onClose()
 
 void  GameStageMap::draw()
 {
-	glClearColor(0, 0, 1, 0);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	//triangle->draw(drawingContext);
-	//cube->draw(drawingContext);
-	//texturedCube->draw(drawingContext);
-
-	//model->draw(drawingContext);
-	//drawingContext->view = staticCamera->getViewMatrix();
-
-	//model1->draw(drawingContext);
-	//model2->draw(drawingContext);
 
 	glfwSwapBuffers(window);
 }
