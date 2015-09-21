@@ -107,9 +107,9 @@ void MovableCamera::lookOnTarget(const glm::vec3& target)
 }
 
 
-void MovableCamera::setPosition(glm::vec3 cameraPos, glm::vec3 direction, const glm::vec3& up)
+void MovableCamera::setPosition(glm::vec3 cameraPos, const glm::vec3& target, const glm::vec3& up)
 {
 	this->Position = cameraPos;
-	this->Front = direction;
+	this->Front = target;
 	Up = up;
 }
