@@ -13,6 +13,7 @@
 
 #include <Input\IKeyboardProcessor.h>
 #include <Input\IMouseMovementProcessor.h>
+#include <Input\IMouseClickProcessor.h>
 #include <Input\IMouseScrollProcessor.h>
 #include <Input\KeyBindingsHandler.h>
 
@@ -25,6 +26,7 @@ class WindowManager
 	: public Registerer<IKeyboardPocessorPtr>
 	, public Registerer<IMouseMovementProcessorPtr>
 	, public Registerer<IMouseScrollProcessorPtr>
+	, public Registerer<IMouseClickProcessorPtr>
 {
 public:
 
@@ -47,13 +49,14 @@ private:
 
 	GLFWwindow* window;
 	DrawingContextPtr drawingContext;
-		
+
 	bool running;
 	bool isWindowManagerReady;
 
 	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 	static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 	static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+	static void mouse_click_callback(GLFWwindow* window, int button, int action, int mods);
 
 	//to jest slabe, mozna wyciagnac caly input handler jako statyczna klase
 	//i jakis globalny inkrementator sluzacy do wyciagania okreslonego

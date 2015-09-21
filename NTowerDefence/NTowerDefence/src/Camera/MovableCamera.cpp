@@ -87,6 +87,11 @@ void MovableCamera::ProcessMouseScroll(GLfloat yoffset)
         this->Zoom = 45.0f;
 }
 
+void MovableCamera::ProcessMouseClick(int button, int action, int mods)
+{
+
+}
+
 void MovableCamera::updateMovableCameraVectors()
 {
     // Calculate the new Front vector

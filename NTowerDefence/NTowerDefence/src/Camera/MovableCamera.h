@@ -12,6 +12,7 @@
 #include <Input\IKeyboardProcessor.h>
 #include <Input\IMouseMovementProcessor.h>
 #include <Input\IMouseScrollProcessor.h>
+#include <Input\IMouseClickProcessor.h>
 
 // Default MovableCamera values
 const GLfloat YAW = -90.0f;
@@ -26,6 +27,7 @@ class MovableCamera
 	, public IKeyboardPocessor
 	, public IMouseMovementProcessor
 	, public IMouseScrollProcessor
+	, public IMouseClickProcessor
 {
 public:
     // MovableCamera Attributes
@@ -56,6 +58,8 @@ public:
 	void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch = true);
  
 	void ProcessMouseScroll(GLfloat yoffset);
+
+	void ProcessMouseClick(int button, int action, int mods);
 
 	void update(float elapsedTime);
 

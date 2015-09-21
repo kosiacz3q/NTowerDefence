@@ -25,7 +25,7 @@ void WindowManager::init()
 	setGlStates();
 }
 
-void initializerCallback(int a , const char * description)
+void initializerCallback(int a, const char * description)
 {
 	throw std::logic_error(std::string(description));
 }
@@ -33,9 +33,9 @@ void initializerCallback(int a , const char * description)
 void WindowManager::initGLFW()
 {
 	glfwSetErrorCallback(initializerCallback);
-	
+
 	if (!glfwInit())
-	{		
+	{
 		throw std::logic_error("Failed to initialize GLFW\n");
 	}
 
@@ -46,7 +46,7 @@ void WindowManager::initGLFW()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	
+
 
 	// Open a window and create its OpenGL context
 	window = glfwCreateWindow(1024, 768, "NTowerDefence", NULL, NULL);
@@ -101,8 +101,8 @@ void WindowManager::key_callback(GLFWwindow* window, int key, int scancode, int 
 
 	for (auto obj : *container)
 	{
-		obj.second->ProcessKeyboard(keyBindingsHandler->getBinding(key) , 1);
-	}
+		obj.second->ProcessKeyboard(keyBindingsHandler->getBinding(key), 1);
+	}	
 }
 
 bool firstMouse = true;
@@ -129,6 +129,17 @@ void WindowManager::mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	{
 		obj.second->ProcessMouseMovement(xoffset, yoffset);
 	}
+}
+
+void WindowManager::mouse_click_callback(GLFWwindow * window, int button, int action, int mods)
+{
+	auto container = ((Registerer<IMouseClickProcessorPtr>)*activeWindowManager).getContainer();
+
+	for (auto obj : *container)
+	{
+		obj.second->ProcessMouseClick(button, action, mods);
+	}	
+	printf("Click");
 }
 
 void WindowManager::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
