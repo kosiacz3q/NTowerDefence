@@ -2,6 +2,7 @@
 !NTowerDefence/NTowerDefence/libs/debug/glfw3.lib
 !NTowerDefence/NTowerDefence/libs/debug/glew32.lib
 !NTowerDefence/NTowerDefence/libs/debug/soil.lib
+!NTowerDefence/NTowerDefence/libs/debug/assimpd.lib
 !NTowerDefence/NTowerDefence/libs/debug/assimp.lib
 
 !NTowerDefence/NTowerDefence/libs/release/glfw3.lib
@@ -20,6 +21,7 @@
 NTowerDefence/Debug/NTowerDefence.exe
 NTowerDefence/Release/NTowerDefence.exe
 
+*.lnk
 *.exe
 *.tlog
 *.idb
