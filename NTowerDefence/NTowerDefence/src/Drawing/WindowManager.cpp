@@ -25,12 +25,21 @@ void WindowManager::init()
 	setGlStates();
 }
 
+void initializerCallback(int a , const char * description)
+{
+	throw std::logic_error(std::string(description));
+}
+
 void WindowManager::initGLFW()
 {
+	glfwSetErrorCallback(initializerCallback);
+
 	if (!glfwInit())
 	{
 		throw std::logic_error("Failed to initialize GLFW\n");
 	}
+
+	glfwSetErrorCallback(nullptr);
 
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
