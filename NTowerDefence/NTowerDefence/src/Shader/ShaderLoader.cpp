@@ -65,8 +65,9 @@ IShaderPtr ShaderLoader::LoadShaderFromFile(const std::string& vertexFilePath, c
 	// Check Vertex Shader
 	glGetShaderiv(VertexShaderID, GL_COMPILE_STATUS, &Result);
 	glGetShaderiv(VertexShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-	std::vector<char> VertexShaderErrorMessage(InfoLogLength);
-	glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, &VertexShaderErrorMessage[0]);
+	//std::vector<char> VertexShaderErrorMessage = std::vector<char>(InfoLogLength);
+	char VertexShaderErrorMessage[250] = { 0 };
+	glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, VertexShaderErrorMessage);
 	fprintf(stdout, "%s\n", &VertexShaderErrorMessage[0]);
 
 	// Compile Fragment Shader
@@ -78,8 +79,9 @@ IShaderPtr ShaderLoader::LoadShaderFromFile(const std::string& vertexFilePath, c
 	// Check Fragment Shader
 	glGetShaderiv(FragmentShaderID, GL_COMPILE_STATUS, &Result);
 	glGetShaderiv(FragmentShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-	std::vector<char> FragmentShaderErrorMessage(InfoLogLength);
-	glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL, &FragmentShaderErrorMessage[0]);
+	//std::vector<char> FragmentShaderErrorMessage(InfoLogLength);
+	char FragmentShaderErrorMessage[250] = { 0 };
+	glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL, FragmentShaderErrorMessage);
 	fprintf(stdout, "%s\n", &FragmentShaderErrorMessage[0]);
 
 	// Link the program
@@ -92,8 +94,9 @@ IShaderPtr ShaderLoader::LoadShaderFromFile(const std::string& vertexFilePath, c
 	// Check the program
 	glGetProgramiv(ProgramID, GL_LINK_STATUS, &Result);
 	glGetProgramiv(ProgramID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-	std::vector<char> ProgramErrorMessage(max(InfoLogLength, int(1)));
-	glGetProgramInfoLog(ProgramID, InfoLogLength, NULL, &ProgramErrorMessage[0]);
+	//std::vector<char> ProgramErrorMessage(max(InfoLogLength, int(1)));
+	char ProgramErrorMessage[250] = { 0 };
+	glGetProgramInfoLog(ProgramID, InfoLogLength, NULL, ProgramErrorMessage);
 	fprintf(stdout, "%s\n", &ProgramErrorMessage[0]);
 
 	glDeleteShader(VertexShaderID);
