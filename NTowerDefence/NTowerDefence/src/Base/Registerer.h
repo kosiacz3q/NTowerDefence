@@ -43,6 +43,6 @@ public:
 		return container;
 	}
 
-private:
+protected:
 	ContainerPtr container;
 };

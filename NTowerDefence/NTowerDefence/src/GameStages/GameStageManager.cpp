@@ -17,7 +17,7 @@ GameStageManager::~GameStageManager()
 
 void GameStageManager::registerStage(BaseGameStagePtr gameStage)
 {
-	gameStage->init();
+	gameStage->initStage();
 
 	stagesContainer.insert(PairIdStage(gameStage->getId(), gameStage));
 }
@@ -38,9 +38,9 @@ void GameStageManager::requestStageSet(std::string stageId)
 
 void GameStageManager::iterate()
 {
-	actualStage->update(updateContext);
+	actualStage->updateStage(updateContext);
 
-	actualStage->draw();
+	actualStage->drawStage();
 
 	if (isChangeRequested)
 	{

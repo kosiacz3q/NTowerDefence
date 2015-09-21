@@ -7,9 +7,7 @@
 GameStageMap::GameStageMap(GameContextPtr gameContext)
 	:gameContext(gameContext)
 {
-	drawingContext = std::make_shared<DrawingContext>();
-
-	staticCamera = std::make_shared<StaticCamera>();
+	
 	movableCamera = std::make_shared<MovableCamera>(glm::vec3(-3.0f, -3.0f, 3.0f));
 
 	state = GameStageState::NOT_INITIALIZED;
@@ -29,9 +27,6 @@ void GameStageMap::init()
 
 	//model = gameContext->modelManager->getAsset("transparentModel");
 
-	model1 = gameContext->gameObjectsManager->getAsset("fuckingAwesomeTree");
-	model2 = gameContext->gameObjectsManager->getAsset("fuckingAwesomeTree");
-
 	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
 	//drawingContext->projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
 	drawingContext->projection = glm::perspective(1.f, (float)900 / (float)600, 0.1f, 100.0f);
@@ -39,8 +34,8 @@ void GameStageMap::init()
 	// Or, for an ortho camera :
 	//glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,0.0f,100.0f); // In world coordinates
 
-	model1->init();
-	model2->init();
+	//model1->init();
+	//model2->init();
 
 	//gameContext->mouseMovementRegisterer->registerObject("camera", movableCamera);
 	gameContext->keyboardRegisterer->registerObject("camera", movableCamera);
@@ -52,21 +47,7 @@ void GameStageMap::onBegin()
 {
 	window = gameContext->windowHandler->getWindow();
 
-	//triangle->init();
-	//cube->init();
-	//texturedCube->init();
-	//model->init();
-	
-	model1->scale(glm::vec3(0.01, 0.01, 0.01));
-	model1->translateTo(glm::vec3(0.0f, -14.f, 0.0f));
 
-	model2->scale(glm::vec3(0.01, 0.01, 0.01));
-	model2->translateTo(glm::vec3(0.0f, 14.f, 0.0f));
-	
-	//camera->lookOnTarget(glm::vec3(0, 0, 0));
-
-	//staticCamera->setPosition(glm::vec3(14, 0, 10), glm::vec3(-14, 0, -9.95f));
-	//staticCamera->setUpVector(glm::vec3(0, 0, 1));
 
 	movableCamera->setPosition(glm::vec3(14, 0, 10), glm::vec3(-14, 0, -9.95f), glm::vec3(0, 0, 1));
 
@@ -92,13 +73,14 @@ void  GameStageMap::draw()
 	//model->draw(drawingContext);
 	//drawingContext->view = staticCamera->getViewMatrix();
 
-	model1->draw(drawingContext);
-	model2->draw(drawingContext);
+	//model1->draw(drawingContext);
+	//model2->draw(drawingContext);
 
 	glfwSwapBuffers(window);
 }
 
 void GameStageMap::update(UpdateContextPtr context)
 {
+	//model1->update(context),
 	drawingContext->view = movableCamera->getViewMatrix();
 }
