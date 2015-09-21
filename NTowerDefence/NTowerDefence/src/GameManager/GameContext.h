@@ -14,6 +14,7 @@
 #include <Input\IKeyboardProcessor.h>
 #include <Input\IMouseMovementProcessor.h>
 #include <Input\IMouseScrollProcessor.h>
+#include <Input\IMouseClickProcessor.h>
 
 #include <Base\Registerer.h>
 
@@ -34,6 +35,7 @@ public:
 	std::shared_ptr<Registerer<IKeyboardPocessorPtr> > keyboardRegisterer;
 	std::shared_ptr<Registerer<IMouseMovementProcessorPtr> > mouseMovementRegisterer;
 	std::shared_ptr<Registerer<IMouseScrollProcessorPtr> > mouseScrollRegisterer;
+	std::shared_ptr<Registerer<IMouseClickProcessorPtr> > mouseClickRegisterer;
 };
 
 typedef std::shared_ptr<GameContext> GameContextPtr;

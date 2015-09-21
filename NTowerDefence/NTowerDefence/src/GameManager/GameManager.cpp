@@ -17,6 +17,7 @@ GameManager::GameManager()
 	gameContext->keyboardRegisterer = gameContext->windowHandler;
 	gameContext->mouseMovementRegisterer = gameContext->windowHandler;
 	gameContext->mouseScrollRegisterer = gameContext->windowHandler;
+	gameContext->mouseClickRegisterer = gameContext->windowHandler;
 
 	gameContext->textureManager = TextureManagerPtr(new TextureManager());
 	gameContext->modelManager = ModelContainersManagerPtr(new ModelContainersManager());

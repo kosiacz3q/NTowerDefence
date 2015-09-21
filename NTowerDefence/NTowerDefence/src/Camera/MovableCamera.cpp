@@ -8,20 +8,17 @@ MovableCamera::MovableCamera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfl
 	MouseSensitivity(SENSITIVTY), 
 	Zoom(ZOOM),
 	Position(position),
-	WorldUp(up),
 	Yaw(yaw),
 	Pitch(pitch)
 {
 	this->updateMovableCameraVectors();
 }
     // Constructor with scalar values
-MovableCamera::MovableCamera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch) 
+MovableCamera::MovableCamera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ) 
 	: Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)
 {
     this->Position = glm::vec3(posX, posY, posZ);
-    this->WorldUp = glm::vec3(upX, upY, upZ);
-    this->Yaw = yaw;
-    this->Pitch = pitch;
+    this->Up = glm::vec3(upX, upY, upZ);
     this->updateMovableCameraVectors();
 }
 
@@ -39,17 +36,20 @@ void MovableCamera::update(float elapsedTime)
 
 }
 
-    // Processes input received from any keyboard-like input system. Accepts input parameter in the form of MovableCamera defined ENUM (to abstract it from windowing systems)
+// Processes input received from any keyboard-like input system. Accepts input parameter in the form of MovableCamera defined ENUM (to abstract it from windowing systems)
 void MovableCamera::ProcessKeyboard(ACTIVE_INPUT direction, float deltaTime)
 {
     GLfloat velocity = this->MovementSpeed * deltaTime;
 
     if (direction == FORWARD)
         this->Position += this->Front * velocity;
+
     if (direction == BACKWARD)
         this->Position -= this->Front * velocity;
+
     if (direction == LEFT)
         this->Position -= this->Right * velocity;
+
     if (direction == RIGHT)
         this->Position += this->Right * velocity;
 }
@@ -87,16 +87,21 @@ void MovableCamera::ProcessMouseScroll(GLfloat yoffset)
         this->Zoom = 45.0f;
 }
 
+void MovableCamera::ProcessMouseClick(int button, int action, int mods)
+{
+
+}
+
 void MovableCamera::updateMovableCameraVectors()
 {
     // Calculate the new Front vector
-    glm::vec3 front;
-    front.x = cos(glm::radians(this->Yaw)) * cos(glm::radians(this->Pitch));
-    front.y = sin(glm::radians(this->Pitch));
-    front.z = sin(glm::radians(this->Yaw)) * cos(glm::radians(this->Pitch));
-    this->Front = glm::normalize(front);
+    //glm::vec3 front;
+    //front.x = cos(glm::radians(this->Yaw)) * cos(glm::radians(this->Pitch));
+   // front.y = sin(glm::radians(this->Pitch));
+  //  front.z = sin(glm::radians(this->Yaw)) * cos(glm::radians(this->Pitch));
+   // this->Front = glm::normalize(front);
     // Also re-calculate the Right and Up vector
-    this->Right = glm::normalize(glm::cross(this->Front, this->WorldUp));  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
+
     this->Up    = glm::normalize(glm::cross(this->Right, this->Front));
 }
 
@@ -107,9 +112,11 @@ void MovableCamera::lookOnTarget(const glm::vec3& target)
 }
 
 
-void MovableCamera::setPosition(glm::vec3 cameraPos, const glm::vec3& target, const glm::vec3& up)
+void MovableCamera::setPosition(glm::vec3 cameraPos, const glm::vec3& direction, const glm::vec3& up)
 {
-	this->Position = cameraPos;
-	this->Front = target;
+	this->Position = glm::normalize(cameraPos);
+	this->Front = direction;
 	Up = up;
+
+	//updateMovableCameraVectors();
 }

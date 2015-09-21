@@ -12,6 +12,7 @@
 #include <Input\IKeyboardProcessor.h>
 #include <Input\IMouseMovementProcessor.h>
 #include <Input\IMouseScrollProcessor.h>
+#include <Input\IMouseClickProcessor.h>
 
 // Default MovableCamera values
 const GLfloat YAW = -90.0f;
@@ -26,6 +27,7 @@ class MovableCamera
 	, public IKeyboardPocessor
 	, public IMouseMovementProcessor
 	, public IMouseScrollProcessor
+	, public IMouseClickProcessor
 {
 public:
     // MovableCamera Attributes
@@ -45,7 +47,7 @@ public:
     // Constructor with vectors
 	MovableCamera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), GLfloat yaw = YAW, GLfloat pitch = PITCH);
 	
-	MovableCamera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch);
+	MovableCamera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ);
 
     // Returns the view matrix calculated using Eular Angles and the LookAt Matrix
 	glm::mat4x4 getViewMatrix();
@@ -56,6 +58,8 @@ public:
 	void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch = true);
  
 	void ProcessMouseScroll(GLfloat yoffset);
+
+	void ProcessMouseClick(int button, int action, int mods);
 
 	void update(float elapsedTime);
 

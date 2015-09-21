@@ -39,6 +39,7 @@ void GameStageMap::init()
 
 	//gameContext->mouseMovementRegisterer->registerObject("camera", movableCamera);
 	gameContext->keyboardRegisterer->registerObject("camera", movableCamera);
+	gameContext->mouseClickRegisterer->registerObject("mouseClick", movableCamera);
 
 	state = GameStageState::READY;
 }

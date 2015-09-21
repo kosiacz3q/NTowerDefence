@@ -104,6 +104,7 @@
     <ClInclude Include="src\Base\ICopyable.h" />
     <ClInclude Include="src\Base\IShader.h" />
     <ClInclude Include="src\GameObjects\ModelObject.h" />
+    <ClInclude Include="src\Input\IMouseClickProcessor.h" />
     <ClInclude Include="src\Input\KeyBindingsHandler.h" />
     <ClInclude Include="src\Base\AssimpUtils.h" />
     <ClInclude Include="src\Input\IKeyboardProcessor.h" />
