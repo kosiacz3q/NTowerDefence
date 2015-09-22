@@ -7,17 +7,25 @@
 #include <Base/BaseGameObject.h>
 #include <Base/UpdateContext.hpp>
 #include <Base/Registerer.h>
+#include <GameStages\GUI\BaseGUIElement.h>
 
 class BaseGameStage
-	: public Registerer<BaseGameObjectPtr>
+	: protected Registerer<BaseGameObjectPtr>,
+	protected Registerer<BaseGUIElementPtr>
 {
 public:
 	BaseGameStage();
 	~BaseGameStage();
 
+	virtual void registerGameObject(std::string id, BaseGameObjectPtr baseGameObject) final;
+
+	virtual void registerBaseGUIElement(std::string id, BaseGUIElementPtr baseGUIElement) final;
+
 	virtual void initStage() final;
 
 	virtual void drawStage() final;
+
+	virtual void drawGUI(UpdateContextPtr context) final;
 
 	virtual void updateStage(UpdateContextPtr context);
 
@@ -32,12 +40,15 @@ public:
 
 
 protected:
-	DrawingContextPtr drawingContext;
+	
 	virtual void init() = 0;
 
 	virtual void draw() = 0;
 
 	virtual void update(UpdateContextPtr context) = 0;
+
+	DrawingContextPtr drawingContext;	
+
 private:
 	
 };

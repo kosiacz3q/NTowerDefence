@@ -64,7 +64,6 @@ void GameStageMap::onClose()
 
 void  GameStageMap::draw()
 {
-
 	glfwSwapBuffers(window);
 }
 

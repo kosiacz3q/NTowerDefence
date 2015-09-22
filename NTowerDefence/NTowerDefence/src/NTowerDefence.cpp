@@ -127,8 +127,8 @@ int main(void)
 	model2->scale(glm::vec3(0.001, 0.001, 0.001));
 	model2->translateTo(glm::vec3(0.0f, 14.f, 0.0f));
 
-	gameStageMap->registerObject("model1", model1);
-	gameStageMap->registerObject("model2", model2);
+	gameStageMap->registerGameObject("model1", model1);
+	gameStageMap->registerGameObject("model2", model2);
 	gameContext->gameStageManager->registerStage(gameStageMap);
 	gameContext->gameStageManager->requestStageSet("GAME_STAGE_MAP");
 

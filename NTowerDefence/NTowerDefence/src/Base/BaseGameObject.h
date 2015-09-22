@@ -7,8 +7,8 @@
 //#include <Base/AssetsManager/GenericSharedAssetsManager.h>
 #include <Base\AssetsManager\GenericUniqueAssetsManager.h>
 
-class BaseGameObject : 
-	public IDrawable, 
+class BaseGameObject :
+	public IDrawable,
 	public IUpdateable,
 	public ICopyable<BaseGameObject>
 {
@@ -30,7 +30,7 @@ public:
 	void translateTo(const glm::vec3& destination)
 	{
 		modelMatrix = glm::scale(glm::mat4(1), modelScale);
-		modelMatrix = glm::translate(modelMatrix,destination);
+		modelMatrix = glm::translate(modelMatrix, destination);
 	}
 
 	void scale(const glm::vec3& scaleVector)
@@ -49,4 +49,4 @@ protected:
 
 typedef std::shared_ptr <BaseGameObject> BaseGameObjectPtr;
 typedef GenericUniqueAssetsManager<BaseGameObjectPtr> BaseGameObjectsManager;
-typedef std::shared_ptr< BaseGameObjectsManager> BaseGameObjectsManagerPtr;
+typedef std::shared_ptr<BaseGameObjectsManager> BaseGameObjectsManagerPtr;
