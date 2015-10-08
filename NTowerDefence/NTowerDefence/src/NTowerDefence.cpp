@@ -28,7 +28,15 @@ int main(void)
 		make_pair('A', ACTIVE_INPUT::LEFT),
 		make_pair('a', ACTIVE_INPUT::LEFT),
 		make_pair('D', ACTIVE_INPUT::RIGHT),
-		make_pair('d', ACTIVE_INPUT::RIGHT)
+		make_pair('d', ACTIVE_INPUT::RIGHT),
+		make_pair('q', ACTIVE_INPUT::TURNLEFT),
+		make_pair('Q', ACTIVE_INPUT::TURNLEFT),
+		make_pair('e', ACTIVE_INPUT::TURNRIGHT),
+		make_pair('E', ACTIVE_INPUT::TURNRIGHT),		
+		make_pair('R', ACTIVE_INPUT::UP),
+		make_pair('r', ACTIVE_INPUT::UP),
+		make_pair('F', ACTIVE_INPUT::DOWN),
+		make_pair('f', ACTIVE_INPUT::DOWN),
 	}
 	);
 
@@ -107,6 +115,13 @@ int main(void)
 			)
 		);
 
+	gameContext->modelManager->InsertAsset(
+		"houseModel",
+		modelLoader.LoadModel(
+			"models/house/house.3ds"					
+			)
+		);
+
 	gameContext->gameObjectsManager->InsertAsset(
 		"fuckingAwesomeTree",
 		BaseGameObjectPtr(
@@ -115,11 +130,23 @@ int main(void)
 				gameContext->shaderManager->getAsset("workingModelShader")
 				))
 		);
+
+	gameContext->gameObjectsManager->InsertAsset(
+		"fuckingAwesomeHouse",
+		BaseGameObjectPtr(
+			new ModelObject(
+				gameContext->modelManager->getAsset("houseModel"),
+				gameContext->shaderManager->getAsset("workingModelShader")
+				))
+		);
 	auto gameStageMap = make_shared<GameStageMap>(gameContext);
 
 
 	auto model1 = gameContext->gameObjectsManager->getAsset("fuckingAwesomeTree");
 	auto model2 = gameContext->gameObjectsManager->getAsset("fuckingAwesomeTree");
+	auto model3 = gameContext->gameObjectsManager->getAsset("fuckingAwesomeHouse");
+	auto model4 = gameContext->gameObjectsManager->getAsset("fuckingAwesomeHouse");
+	auto model5 = gameContext->gameObjectsManager->getAsset("fuckingAwesomeHouse");
 	
 	model1->scale(glm::vec3(0.001, 0.001, 0.001));
 	model1->translateTo(glm::vec3(0.0f, -14.f, 0.0f));
@@ -127,8 +154,20 @@ int main(void)
 	model2->scale(glm::vec3(0.001, 0.001, 0.001));
 	model2->translateTo(glm::vec3(0.0f, 14.f, 0.0f));
 
+	model3->scale(glm::vec3(0.002, 0.002, 0.002));
+	model3->translateTo(glm::vec3(20.0f, 28.f, 0.0f));
+
+	model4->scale(glm::vec3(0.001, 0.001, 0.001));
+	model4->translateTo(glm::vec3(-10.0f, -28.f, 0.0f));
+
+	model5->scale(glm::vec3(0.001, 0.001, 0.001));
+	model5->translateTo(glm::vec3(30.0f, -0.f, 0.0f));
+
 	gameStageMap->registerGameObject("model1", model1);
 	gameStageMap->registerGameObject("model2", model2);
+	gameStageMap->registerGameObject("model3", model3);
+	gameStageMap->registerGameObject("model4", model4);
+	gameStageMap->registerGameObject("model5", model5);
 	gameContext->gameStageManager->registerStage(gameStageMap);
 	gameContext->gameStageManager->requestStageSet("GAME_STAGE_MAP");
 

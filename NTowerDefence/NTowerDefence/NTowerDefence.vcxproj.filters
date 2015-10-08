@@ -528,6 +528,9 @@
     <ClInclude Include="src\GameStages\GUI\BaseGUIElement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameStages\GUI\Rectangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\NTowerDefence.cpp">
@@ -597,6 +600,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameObjects\ModelObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameStages\GUI\Rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -6,5 +6,10 @@ enum ACTIVE_INPUT
 	FORWARD = 1,
 	BACKWARD = 2,
 	LEFT = 3,
-	RIGHT = 4
+	RIGHT = 4,
+	TURNLEFT = 5,
+	TURNRIGHT = 6,
+	UP = 7,
+	DOWN = 8
+
 };

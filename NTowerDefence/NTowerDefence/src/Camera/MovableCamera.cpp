@@ -39,6 +39,7 @@ void MovableCamera::update(float elapsedTime)
 // Processes input received from any keyboard-like input system. Accepts input parameter in the form of MovableCamera defined ENUM (to abstract it from windowing systems)
 void MovableCamera::ProcessKeyboard(ACTIVE_INPUT direction, float deltaTime)
 {
+	//printf("%d", direction);
     GLfloat velocity = this->MovementSpeed * deltaTime;
 
     if (direction == FORWARD)
@@ -47,11 +48,39 @@ void MovableCamera::ProcessKeyboard(ACTIVE_INPUT direction, float deltaTime)
     if (direction == BACKWARD)
         this->Position -= this->Front * velocity;
 
-    if (direction == LEFT)
-        this->Position -= this->Right * velocity;
+	if (direction == LEFT)
+	{				
+		this->Front = glm::mat3(glm::rotate(glm::mat4(1.0),velocity*2, this->Up)) * this->Front;		
+	}
+	
+	if (direction == RIGHT)
+	{
+		this->Front = glm::mat3(glm::rotate(glm::mat4(1.0), -velocity*2, this->Up)) * this->Front;
+	}		
 
-    if (direction == RIGHT)
-        this->Position += this->Right * velocity;
+	if (direction == TURNRIGHT)
+	{
+		this->Front = glm::mat3(glm::rotate(glm::mat4(1.0f), -0.05f, glm::vec3(0, 1, 0))) * this->Front;
+		//this->Front = glm::mat3(glm::rotate(glm::mat4(1.0), velocity * 2, this->Up)) * this->Front;
+	}
+
+	if (direction == TURNLEFT)
+	{
+		this->Front = glm::mat3(glm::rotate(glm::mat4(1.0f), 0.05f, glm::vec3(0, 1, 0))) * this->Front;
+		//this->Front = glm::mat3(glm::rotate(glm::mat4(1.0), -velocity * 2, this->Up)) * this->Front;
+	}
+
+	if (direction == UP)
+	{
+		this->Front = glm::mat3(glm::rotate(glm::mat4(1.0f), -0.05f, glm::vec3(1, 0, 1))) * this->Front;
+		//this->Front = glm::mat3(glm::rotate(glm::mat4(1.0), velocity * 2, this->Up)) * this->Front;
+	}
+
+	if (direction == DOWN)
+	{
+		this->Front = glm::mat3(glm::rotate(glm::mat4(1.0f), 0.05f, glm::vec3(1, 0, 1))) * this->Front;
+		//this->Front = glm::mat3(glm::rotate(glm::mat4(1.0), -velocity * 2, this->Up)) * this->Front;
+	}
 }
 
 // Processes input received from a mouse input system. Expects the offset value in both the x and y direction.
@@ -95,19 +124,27 @@ void MovableCamera::ProcessMouseClick(int button, int action, int mods)
 void MovableCamera::updateMovableCameraVectors()
 {
     // Calculate the new Front vector
-    //glm::vec3 front;
-    //front.x = cos(glm::radians(this->Yaw)) * cos(glm::radians(this->Pitch));
-   // front.y = sin(glm::radians(this->Pitch));
-  //  front.z = sin(glm::radians(this->Yaw)) * cos(glm::radians(this->Pitch));
-   // this->Front = glm::normalize(front);
-    // Also re-calculate the Right and Up vector
+   /* glm::vec3 front;
+    front.x = cos(glm::radians(this->Yaw)) * cos(glm::radians(this->Pitch));
+    front.y = sin(glm::radians(this->Pitch));
+    front.z = sin(glm::radians(this->Yaw)) * cos(glm::radians(this->Pitch));
+    this->Front = glm::normalize(front);
 
-    this->Up    = glm::normalize(glm::cross(this->Right, this->Front));
+    // Also re-calculate the Right and Up vector
+	/*glm::vec3 right = glm::vec3(
+		sin(glm::radians(this->Pitch) - 3.14f / 2.0f),
+		0,
+		cos(glm::radians(this->Pitch) - 3.14f / 2.0f)
+		);
+	this->Right = glm::normalize(right);*/
+
+    //this->Up    = glm::normalize(glm::cross(this->Right, this->Front));
 }
 
 void MovableCamera::lookOnTarget(const glm::vec3& target)
 {
 	Front = target - Position;
+	//Right = target - Position;
 	Up = glm::vec3(0, 0, 1);
 }
 
@@ -118,5 +155,5 @@ void MovableCamera::setPosition(glm::vec3 cameraPos, const glm::vec3& direction,
 	this->Front = direction;
 	Up = up;
 
-	//updateMovableCameraVectors();
+	updateMovableCameraVectors();
 }
